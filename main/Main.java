@@ -21,6 +21,7 @@ public class Main {
         ApplicationState appState = new ApplicationState(uiModule);
         IJPaintController controller = new JPaintController(uiModule, appState);
         //MouseEvents mouseEvents = new MouseEvents();
+
         controller.setup();
 
         // TODO add click handler
