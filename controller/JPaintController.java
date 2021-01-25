@@ -1,5 +1,7 @@
 package controller;
 
+import main.RedoCommand;
+import main.UndoCommand;
 import model.interfaces.IApplicationState;
 import view.EventName;
 import view.interfaces.IUiModule;
@@ -25,9 +27,9 @@ public class JPaintController implements IJPaintController {
         uiModule.addEvent(EventName.CHOOSE_SHADING_TYPE, () -> applicationState.setActiveShadingType());
         uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, () -> applicationState.setActiveStartAndEndPointMode());
 
-        // TODO
-//        uiModule.addEvent(EventName.UNDO, () -> new UndoCommand());
-//        uiModule.addEvent(EventName.DELETE, () -> new DeleteCommand());
+        // added undo/redo commands
+        uiModule.addEvent(EventName.UNDO, () -> new UndoCommand().run());
+        uiModule.addEvent(EventName.DELETE, () -> new RedoCommand().run());
 
 
     }

@@ -1,13 +1,13 @@
 package main;
 
 
-public class Point1 {
+public class Point {
     int x;
     int y;
-    Point1 point;
+    Point point;
 
 
-    public Point1(int x, int y) {
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
 //        System.out.println(x + ", " + y);
@@ -22,7 +22,7 @@ public class Point1 {
         return y;
     }
 
-    public Point1 getPoint(){
+    public Point getPoint(){
         return point;
     }
 
