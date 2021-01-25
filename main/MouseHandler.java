@@ -1,16 +1,22 @@
 package main;
 
+import view.interfaces.PaintCanvasBase;
+
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 
 
 public class MouseEvents extends MouseAdapter {
 
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
+    public MouseEvents (PaintCanvasBase paintCanvas) {
+
+
 
     }
+
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -27,6 +33,8 @@ public class MouseEvents extends MouseAdapter {
         int endPointY = e.getY();
         Point endPoint = new Point(endPointX, endPointY);
 //        System.out.println("End point X: " + endPoint.getX() +  " End point Y: " + endPoint.getY());
+
+
 
     }
 
