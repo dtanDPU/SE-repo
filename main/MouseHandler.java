@@ -4,6 +4,7 @@ import StaticShapeFactory.IShapeList;
 import StaticShapeFactory.IShapeProperties;
 import StaticShapeFactory.ShapeList;
 import StaticShapeFactory.ShapeProperties;
+import model.interfaces.IApplicationState;
 import model.persistence.ApplicationState;
 import view.interfaces.PaintCanvasBase;
 
@@ -19,13 +20,14 @@ public class MouseHandler extends MouseAdapter {
 
     int x, y;
     int height, width;
-    public static ApplicationState appState;
+    public IApplicationState applicationState;
 //    IShapeList iShapeList;
 
 
-    public MouseHandler(PaintCanvasBase canvasBase) {
+    public MouseHandler(PaintCanvasBase canvasBase, ShapeList shapeList, IApplicationState applicationState) {
         this.canvasBase = canvasBase;
-
+        this.shapeList = shapeList;
+        this.applicationState = applicationState;
 
     }
 
@@ -54,7 +56,7 @@ public class MouseHandler extends MouseAdapter {
 //        graphics2d.setColor(Color.GREEN);
 //        graphics2d.fillRect(startPoint.getX(), startPoint.getY(), width, height);
 
-        CreateShapeCmd createShapes = new CreateShapeCmd(shapeProps, appState, shapeList);
+        CreateShapeCmd createShapes = new CreateShapeCmd(shapeProps, applicationState, shapeList);
         createShapes.run();
     }
 

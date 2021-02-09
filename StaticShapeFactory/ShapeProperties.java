@@ -8,39 +8,35 @@ import model.interfaces.IApplicationState;
 import view.interfaces.PaintCanvasBase;
 
 
-import java.awt.*;
-
 public class ShapeProperties implements IShapeProperties{
-    ShapeType shapeType;
-    ShapeColor primary, secondary;
-    ShapeShadingType shadeType;
-    Points startPoint, endPoint;
-    int width, height;
-    PaintCanvasBase paintCanvasBase;
-    IApplicationState applicationState;
+    private ShapeType shapeType;
+    private ShapeColor primary, secondary;
+    private ShapeShadingType shadeType;
+    private Points startPoint, endPoint;
+    private int width, height;
+//    private PaintCanvasBase paintCanvasBase;
 
+//    public ShapeProperties(ShapeType shape_Type, ShapeColor primeColor, ShapeColor secondColor,
+//                           ShapeShadingType shadeType, Points startPoint, Points endPoint, IApplicationState applicationState) {
+//        shapeType = shape_Type;
+//        primary = primeColor;
+//        secondary = secondColor;
+//        this.shadeType = shadeType;
+//        this.startPoint = startPoint;
+//        this.endPoint = endPoint;
+//        height = Math.abs(startPoint.getY()) - endPoint.getY();
+//        width = Math.abs(startPoint.getX() - endPoint.getX());
+//        this.applicationState = applicationState;
+//
+//        setPrimary(applicationState.getActivePrimaryColor());
+//        setSecondary(applicationState.getActiveSecondaryColor());
+//        setShadeType(applicationState.getActiveShapeShadingType());
+//        setShapeType(applicationState.getActiveShapeType());
+//        setWidth(width);
+//        setHeight(height);
+//        setStartPoint(startPoint);
+//        setEndPoint(endPoint);
 
-    public ShapeProperties(ShapeType shape_Type, ShapeColor primeColor, ShapeColor secondColor,
-                           ShapeShadingType shadeType, Points startPoint, Points endPoint, IApplicationState applicationState) {
-        shapeType = shape_Type;
-        primary = primeColor;
-        secondary = secondColor;
-        this.shadeType = shadeType;
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        height = Math.abs(startPoint.getY()) - endPoint.getY();
-        width = Math.abs(startPoint.getX() - endPoint.getX());
-        this.applicationState = applicationState;
-
-        setPrimary(applicationState.getActivePrimaryColor());
-        setSecondary(applicationState.getActiveSecondaryColor());
-        setShadeType(applicationState.getActiveShapeShadingType());
-        setShapeType(applicationState.getActiveShapeType());
-        setWidth(width);
-        setHeight(height);
-        setStartPoint(startPoint);
-        setEndPoint(endPoint);
-    }
 
     public Points getStartPoint() {
         return startPoint;
@@ -88,10 +84,10 @@ public class ShapeProperties implements IShapeProperties{
     public ShapeType getShapeType() {
         return shapeType;
     }
-
-    public PaintCanvasBase getPaintCanvasBase() {
-        return paintCanvasBase;
-    }
+//
+//    public PaintCanvasBase getPaintCanvasBase() {
+//        return paintCanvasBase;
+//    }
 
 
     public void setPrimary(ShapeColor primary) {
@@ -125,5 +121,6 @@ public class ShapeProperties implements IShapeProperties{
     public void setEndPoint(Points endPoint) {
         this.endPoint = endPoint;
     }
+
 
 }

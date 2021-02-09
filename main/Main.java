@@ -2,6 +2,7 @@ package main;
 
 import StaticShapeFactory.IShapeList;
 import StaticShapeFactory.ShapeList;
+import StaticShapeFactory.ShapeProperties;
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.ShapeType;
@@ -22,12 +23,14 @@ public class Main {
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
+        ShapeList shapeList = new ShapeList();
+
 
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
 
 
-        paintCanvas.addMouseListener(new MouseHandler(paintCanvas));
+        paintCanvas.addMouseListener(new MouseHandler(paintCanvas, shapeList, appState));
 //        MouseHandler.getState(appState);
 
 

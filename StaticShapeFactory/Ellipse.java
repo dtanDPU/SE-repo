@@ -27,7 +27,7 @@ public class Ellipse implements IDraw {
         this.height = shapeProperties.getHeight();
     }
 
-    @Override
+
     public void draw(Graphics2D graphics2D) {
         graphics2D = paintCanvasBase.getGraphics2D();
 
@@ -49,4 +49,7 @@ public class Ellipse implements IDraw {
         }
     }
 
+    public IShapeProperties getProps() {
+        return shapeProperties;
+    }
 }

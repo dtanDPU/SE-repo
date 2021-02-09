@@ -35,10 +35,8 @@ public class Triangle implements IDraw {
 
     }
 
-    @Override
     public void draw(Graphics2D graphics2D) {
         graphics2D = paintCanvasBase.getGraphics2D();
-
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
@@ -56,6 +54,9 @@ public class Triangle implements IDraw {
                 graphics2D.drawPolygon(X,Y,3);
             }
         }
+    }
+    public IShapeProperties getProps() {
+        return shapeProperties;
     }
 
 

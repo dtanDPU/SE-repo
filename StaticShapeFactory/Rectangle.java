@@ -27,7 +27,7 @@ public class Rectangle implements IDraw {
         this.height = shapeProperties.getHeight();
     }
 
-    @Override
+
     public void draw(Graphics2D graphics2D) {
         graphics2D = paintCanvasBase.getGraphics2D();
 
@@ -47,6 +47,10 @@ public class Rectangle implements IDraw {
                 graphics2D.drawRect(startPoint.getX(), startPoint.getY(), width, height);
             }
         }
+    }
+
+    public IShapeProperties getProps() {
+        return shapeProperties;
     }
 
 }

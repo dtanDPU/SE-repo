@@ -1,14 +1,10 @@
 package main;
 
 import StaticShapeFactory.*;
-import model.ShapeColor;
-import model.ShapeShadingType;
-import model.ShapeType;
+
 import model.interfaces.IApplicationState;
 import model.interfaces.IDraw;
-import model.persistence.ApplicationState;
 
-import java.awt.*;
 
 public class CreateShapeCmd implements ICommand, IUndoable{
     public ShapeProperties shapeProps;
@@ -27,20 +23,21 @@ public class CreateShapeCmd implements ICommand, IUndoable{
     @Override
     public void run() {
 
+        shapeProps = applicationState.getShapeProps();
         ShapeFactory shapeFactory = new ShapeFactory();
         iDrawShape = shapeFactory.makeShape(shapeProps);
-        shapeList.addShape(shapeProps);
+        shapeList.addShape(iDrawShape);
         CommandHistory.add(this);
     }
 
     @Override
     public void undo() {
-        shapeList.removeShape(shapeProps);
+        shapeList.removeShape(iDrawShape);
 
     }
 
     @Override
     public void redo() {
-        shapeList.addShape(shapeProps);
+        shapeList.addShape(iDrawShape);
     }
 }

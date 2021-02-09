@@ -1,14 +1,10 @@
 package StaticShapeFactory;
 
-import main.CreateShapeCmd;
-import view.interfaces.PaintCanvasBase;
-
+import model.interfaces.IDraw;
 import java.util.ArrayList;
 
-
 public class ShapeList implements IShapeList{
-    ArrayList<IShapeProperties> shapeList;
-
+    ArrayList<IDraw> shapeList;
 
 
     public ShapeList() {
@@ -17,14 +13,14 @@ public class ShapeList implements IShapeList{
 
 
     @Override
-    public void addShape(IShapeProperties shape){
-        shapeList.add(shape);
+    public void addShape(IDraw iDraws){
+        shapeList.add(iDraws);
 
 
     }
     @Override
-    public void removeShape(IShapeProperties shape) {
-        shapeList.remove(shape);
+    public void removeShape(IDraw iDraws) {
+        shapeList.remove(iDraws);
 
     }
 //    @Override

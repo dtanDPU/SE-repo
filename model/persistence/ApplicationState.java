@@ -22,12 +22,12 @@ public class ApplicationState implements IApplicationState {
     private ShapeColor activeSecondaryColor;
     private ShapeShadingType activeShapeShadingType;
     private MouseMode activeMouseMode;
-//    int height, width;
-//    Points startPoint, endPoint;
-//    PaintCanvasBase paintCanvasBase;
-//    ShapeType shapeType;
-//    ShapeColor primary, secondary;
-//    ShapeShadingType shadeType;
+    int height, width;
+    Points startPoint, endPoint;
+    IApplicationState applicationState;
+    ShapeType shapeType;
+    ShapeColor primary, secondary;
+    ShapeShadingType shadeType;
 
 
     public ApplicationState(IUiModule uiModule) {
@@ -36,20 +36,19 @@ public class ApplicationState implements IApplicationState {
         setDefaults();
     }
 
-//    public ShapeProperties getShapeProps() {
-//        ShapeProperties shapeProperties = new ShapeProperties(shapeType, primary, secondary, shadeType, startPoint, endPoint,
-//                paintCanvasBase);
-//
-//        shapeProperties.setPrimary(activePrimaryColor);
-//        shapeProperties.setShapeType(activeShapeType);
-//        shapeProperties.setSecondary(activeSecondaryColor);
-//        shapeProperties.setShadeType(activeShapeShadingType);
-//        shapeProperties.setHeight(height);
-//        shapeProperties.setWidth(width);
-//        shapeProperties.setEndPoint(endPoint);
-//        shapeProperties.setStartPoint(startPoint);
-//        return shapeProperties;
-//    }
+    public ShapeProperties getShapeProps() {
+        ShapeProperties shapeProperties = new ShapeProperties();
+
+        shapeProperties.setPrimary(activePrimaryColor);
+        shapeProperties.setShapeType(activeShapeType);
+        shapeProperties.setSecondary(activeSecondaryColor);
+        shapeProperties.setShadeType(activeShapeShadingType);
+        shapeProperties.setHeight(height);
+        shapeProperties.setWidth(width);
+        shapeProperties.setEndPoint(endPoint);
+        shapeProperties.setStartPoint(startPoint);
+        return shapeProperties;
+    }
 
 
 

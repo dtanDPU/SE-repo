@@ -17,7 +17,6 @@ public interface IApplicationState {
 
     void setActiveStartAndEndPointMode();
 
-
     ShapeType getActiveShapeType();
 
     ShapeColor getActivePrimaryColor();
@@ -28,4 +27,5 @@ public interface IApplicationState {
 
     MouseMode getActiveMouseMode();
 
+    ShapeProperties getShapeProps();
 }
