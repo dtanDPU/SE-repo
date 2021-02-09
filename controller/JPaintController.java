@@ -1,5 +1,6 @@
 package controller;
 
+import StaticShapeFactory.ShapeList;
 import main.RedoCommand;
 import main.UndoCommand;
 import model.interfaces.IApplicationState;
@@ -9,6 +10,7 @@ import view.interfaces.IUiModule;
 public class JPaintController implements IJPaintController {
     private final IUiModule uiModule;
     private final IApplicationState applicationState;
+
 
     public JPaintController(IUiModule uiModule, IApplicationState applicationState) {
         this.uiModule = uiModule;

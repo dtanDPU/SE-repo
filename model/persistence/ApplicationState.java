@@ -1,5 +1,8 @@
 package model.persistence;
 
+import StaticShapeFactory.ShapeList;
+import StaticShapeFactory.ShapeProperties;
+import main.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
@@ -8,6 +11,7 @@ import model.dialogs.DialogProvider;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
 import view.interfaces.IUiModule;
+import view.interfaces.PaintCanvasBase;
 
 public class ApplicationState implements IApplicationState {
     private final IUiModule uiModule;
@@ -18,12 +22,36 @@ public class ApplicationState implements IApplicationState {
     private ShapeColor activeSecondaryColor;
     private ShapeShadingType activeShapeShadingType;
     private MouseMode activeMouseMode;
+//    int height, width;
+//    Points startPoint, endPoint;
+//    PaintCanvasBase paintCanvasBase;
+//    ShapeType shapeType;
+//    ShapeColor primary, secondary;
+//    ShapeShadingType shadeType;
+
 
     public ApplicationState(IUiModule uiModule) {
         this.uiModule = uiModule;
         this.dialogProvider = new DialogProvider(this);
         setDefaults();
     }
+
+//    public ShapeProperties getShapeProps() {
+//        ShapeProperties shapeProperties = new ShapeProperties(shapeType, primary, secondary, shadeType, startPoint, endPoint,
+//                paintCanvasBase);
+//
+//        shapeProperties.setPrimary(activePrimaryColor);
+//        shapeProperties.setShapeType(activeShapeType);
+//        shapeProperties.setSecondary(activeSecondaryColor);
+//        shapeProperties.setShadeType(activeShapeShadingType);
+//        shapeProperties.setHeight(height);
+//        shapeProperties.setWidth(width);
+//        shapeProperties.setEndPoint(endPoint);
+//        shapeProperties.setStartPoint(startPoint);
+//        return shapeProperties;
+//    }
+
+
 
     @Override
     public void setActiveShape() {

@@ -1,5 +1,6 @@
 package model.interfaces;
 
+import StaticShapeFactory.ShapeProperties;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
@@ -16,6 +17,7 @@ public interface IApplicationState {
 
     void setActiveStartAndEndPointMode();
 
+
     ShapeType getActiveShapeType();
 
     ShapeColor getActivePrimaryColor();
@@ -25,4 +27,5 @@ public interface IApplicationState {
     ShapeShadingType getActiveShapeShadingType();
 
     MouseMode getActiveMouseMode();
+
 }

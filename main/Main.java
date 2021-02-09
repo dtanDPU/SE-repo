@@ -1,5 +1,7 @@
 package main;
 
+import StaticShapeFactory.IShapeList;
+import StaticShapeFactory.ShapeList;
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.ShapeType;
@@ -15,16 +17,18 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args){
+
         PaintCanvasBase paintCanvas = new PaintCanvas();
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
+
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
 
-        //MouseHandler mouseHandler = new MouseHandler(paintCanvas);
 
         paintCanvas.addMouseListener(new MouseHandler(paintCanvas));
+//        MouseHandler.getState(appState);
 
 
 
