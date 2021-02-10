@@ -122,5 +122,11 @@ public class ShapeProperties implements IShapeProperties{
         this.endPoint = endPoint;
     }
 
+    public void setStartX(Points x){
+        this.startPoint = x;
+    }
+    public void setStartY(Points y){
+        this.startPoint = y;
+    }
 
 }

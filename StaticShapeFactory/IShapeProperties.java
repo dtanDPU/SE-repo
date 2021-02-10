@@ -31,6 +31,8 @@ public interface IShapeProperties {
     void setShadeType(ShapeShadingType shadeType);
     void setHeight(int height);
     void setWidth(int width);
+    void setStartX(Points x);
+    void setStartY(Points Y);
     void setShapeType(ShapeType shapeType);
     void setStartPoint(Points startPoint);
     void setEndPoint(Points endPoint);

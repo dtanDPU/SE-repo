@@ -11,17 +11,20 @@ public class ShapeFactory {
 
         ShapeType shapeType = shapeProperties.getShapeType();
 
-        if(shapeType.toString().equals("RECTANGLE")) {
-            iDraw = new Rectangle(shapeProperties);
-        }
-        else if(shapeType.toString().equals("Ellipse")) {
-            iDraw = new Ellipse(shapeProperties);
-        }
-        else if(shapeType.toString().equals("Triangle")) {
-            iDraw = new Triangle(shapeProperties);
-        }
-        else {
-            System.out.println("Null Shape");
+        switch (shapeType.toString()) {
+            case "RECTANGLE" -> {
+                iDraw = new Rectangle(shapeProperties);
+                System.out.println("reaches rect");
+            }
+            case "ELLIPSE" -> {
+                iDraw = new Ellipse(shapeProperties);
+                System.out.println("reaches ellipse");
+            }
+            case "TRIANGLE" -> {
+                iDraw = new Triangle(shapeProperties);
+                System.out.println("reaches triangle");
+            }
+            default -> System.out.println("Null Shape");
         }
 
         return iDraw;

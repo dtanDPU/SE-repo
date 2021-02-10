@@ -8,6 +8,6 @@ import java.util.ArrayList;
 public interface IShapeList {
     void addShape(IDraw iDraws);
     void removeShape(IDraw iDraws);
-//    ArrayList<CreateShapeCmd> getShapeList();
+    ArrayList<IDraw> getShapeList();
 }
 

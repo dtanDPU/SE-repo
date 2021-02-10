@@ -23,10 +23,10 @@ public class ShapeList implements IShapeList{
         shapeList.remove(iDraws);
 
     }
-//    @Override
-//    public ArrayList<CreateShapeCmd> getShapeList() {
-//        return shapeList;
-//    }
+    @Override
+    public ArrayList<IDraw> getShapeList() {
+        return shapeList;
+    }
 
 
 }

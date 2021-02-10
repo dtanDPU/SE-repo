@@ -29,7 +29,6 @@ public class Triangle implements IDraw {
         this.startPoint = shapeProperties.getStartPoint();
         this.endPoint = shapeProperties.getEndPoint();
 
-
         X = new int[]{shapeProperties.getStartX(), shapeProperties.getEndX(), shapeProperties.getStartX()};
         Y = new int[]{shapeProperties.getStartY(), shapeProperties.getEndY(), shapeProperties.getEndY()};
 
