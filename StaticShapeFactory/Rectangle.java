@@ -19,7 +19,6 @@ public class Rectangle implements IDraw {
         this.shapeProperties = shapeProperties;
         this.primary = ColorMap.getTheColor(shapeProperties.getPrimary());
         this.secondary = ColorMap.getTheColor(shapeProperties.getSecondary());
-        this.shapeProperties = shapeProperties;
         this.shadingType = shapeProperties.getShadeType();
         this.startPoint = shapeProperties.getStartPoint();
         this.endPoint = shapeProperties.getEndPoint();

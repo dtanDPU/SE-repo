@@ -19,7 +19,7 @@ public class Main {
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
-        ShapeProperties shapeProperties = new ShapeProperties();
+//        ShapeProperties shapeProperties = new ShapeProperties();
 
         ShapeList shapeList = new ShapeList();
 
