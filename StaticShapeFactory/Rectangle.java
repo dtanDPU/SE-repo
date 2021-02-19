@@ -10,13 +10,13 @@ import java.awt.*;
 
 public class Rectangle implements IDraw {
     Color primary, secondary;
-    PaintCanvasBase paintCanvasBase;
     IShapeProperties shapeProperties;
     ShapeShadingType shadingType;
     Points startPoint, endPoint;
     int width, height;
 
-    public Rectangle( IShapeProperties shapeProperties) {
+    public Rectangle(IShapeProperties shapeProperties) {
+        this.shapeProperties = shapeProperties;
         this.primary = ColorMap.getTheColor(shapeProperties.getPrimary());
         this.secondary = ColorMap.getTheColor(shapeProperties.getSecondary());
         this.shapeProperties = shapeProperties;
@@ -27,9 +27,9 @@ public class Rectangle implements IDraw {
         this.height = shapeProperties.getHeight();
     }
 
+    public void draw(Graphics graphics) {
 
-    public void draw(Graphics2D graphics2D) {
-        graphics2D = paintCanvasBase.getGraphics2D();
+        Graphics2D graphics2D = (Graphics2D) graphics;
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
@@ -48,9 +48,4 @@ public class Rectangle implements IDraw {
             }
         }
     }
-
-    public IShapeProperties getProps() {
-        return shapeProperties;
-    }
-
 }

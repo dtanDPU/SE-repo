@@ -5,7 +5,10 @@ import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.IApplicationState;
+import model.interfaces.IDraw;
 import view.interfaces.PaintCanvasBase;
+
+import java.awt.*;
 
 
 public class ShapeProperties implements IShapeProperties{
@@ -14,39 +17,19 @@ public class ShapeProperties implements IShapeProperties{
     private ShapeShadingType shadeType;
     private Points startPoint, endPoint;
     private int width, height;
-//    private PaintCanvasBase paintCanvasBase;
-
-//    public ShapeProperties(ShapeType shape_Type, ShapeColor primeColor, ShapeColor secondColor,
-//                           ShapeShadingType shadeType, Points startPoint, Points endPoint, IApplicationState applicationState) {
-//        shapeType = shape_Type;
-//        primary = primeColor;
-//        secondary = secondColor;
-//        this.shadeType = shadeType;
-//        this.startPoint = startPoint;
-//        this.endPoint = endPoint;
-//        height = Math.abs(startPoint.getY()) - endPoint.getY();
-//        width = Math.abs(startPoint.getX() - endPoint.getX());
-//        this.applicationState = applicationState;
-//
-//        setPrimary(applicationState.getActivePrimaryColor());
-//        setSecondary(applicationState.getActiveSecondaryColor());
-//        setShadeType(applicationState.getActiveShapeShadingType());
-//        setShapeType(applicationState.getActiveShapeType());
-//        setWidth(width);
-//        setHeight(height);
-//        setStartPoint(startPoint);
-//        setEndPoint(endPoint);
+    PaintCanvasBase paintCanvasBase;
 
 
     public Points getStartPoint() {
+        System.out.println("getstartpoint test");
         return startPoint;
     }
-
     public Points getEndPoint() {
         return endPoint;
     }
 
     public int getStartX() {
+
         return startPoint.getX();
     }
 
@@ -57,76 +40,78 @@ public class ShapeProperties implements IShapeProperties{
     public int getEndX() {
         return endPoint.getX();
     }
-
     public int getEndY() {
         return endPoint.getY();
     }
-
     public int getHeight() {
         return height;
     }
-
     public int getWidth() {
         return width;
     }
-
     public ShapeColor getPrimary() {
         return primary;
     }
-
     public ShapeColor getSecondary() {
         return secondary;
     }
-
     public ShapeShadingType getShadeType() {
         return shadeType;
     }
     public ShapeType getShapeType() {
         return shapeType;
     }
-//
-//    public PaintCanvasBase getPaintCanvasBase() {
-//        return paintCanvasBase;
-//    }
-
-
+    public PaintCanvasBase getPaintCanvasBase() {
+        return paintCanvasBase;
+    }
     public void setPrimary(ShapeColor primary) {
         this.primary = primary;
     }
-
     public void setSecondary(ShapeColor secondary) {
         this.secondary = secondary;
     }
-
     public void setShadeType(ShapeShadingType shadeType) {
         this.shadeType = shadeType;
     }
-
     public void setHeight(int height) {
         this.height = height;
     }
-
     public void setWidth(int width) {
         this.width = width;
     }
-
     public void setShapeType(ShapeType shapeType) {
         this.shapeType = shapeType;
     }
-
     public void setStartPoint(Points startPoint) {
         this.startPoint = startPoint;
     }
-
     public void setEndPoint(Points endPoint) {
         this.endPoint = endPoint;
     }
-
     public void setStartX(Points x){
         this.startPoint = x;
     }
     public void setStartY(Points y){
         this.startPoint = y;
     }
+
+    public Points getNewStartPoint() {
+        int startX = Math.min(startPoint.getX(), endPoint.getX());
+        int startY = Math.min(startPoint.getY(), endPoint.getY());
+        return new Points(startX, startY);
+    }
+
+
+    public Points getNewEndPoint() {
+        int endX = Math.max(startPoint.getX(), endPoint.getX());
+        int endY = Math.max(startPoint.getY(), endPoint.getY());
+        return new Points(endX, endY);
+    }
+    @Override
+    public void draw(Graphics2D graphics2D){
+
+    }
+
+
 
 }

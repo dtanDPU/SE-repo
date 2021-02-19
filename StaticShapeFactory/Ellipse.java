@@ -10,7 +10,6 @@ import java.awt.*;
 
 public class Ellipse implements IDraw {
     Color primary, secondary;
-    PaintCanvasBase paintCanvasBase;
     IShapeProperties shapeProperties;
     ShapeShadingType shadingType;
     Points startPoint, endPoint;
@@ -28,8 +27,10 @@ public class Ellipse implements IDraw {
     }
 
 
-    public void draw(Graphics2D graphics2D) {
-        graphics2D = paintCanvasBase.getGraphics2D();
+
+    public void draw(Graphics graphics) {
+
+        Graphics2D graphics2D = (Graphics2D) graphics;
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
@@ -47,9 +48,5 @@ public class Ellipse implements IDraw {
                 graphics2D.drawOval(startPoint.getX(), startPoint.getY(), width, height);
             }
         }
-    }
-
-    public IShapeProperties getProps() {
-        return shapeProperties;
     }
 }

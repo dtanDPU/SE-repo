@@ -5,6 +5,7 @@ import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.IApplicationState;
+import model.interfaces.IDraw;
 import view.interfaces.PaintCanvasBase;
 
 import java.awt.*;
@@ -23,7 +24,7 @@ public interface IShapeProperties {
     int getEndY();
     Points getStartPoint();
     Points getEndPoint();
-//    PaintCanvasBase getPaintCanvasBase();
+    PaintCanvasBase getPaintCanvasBase();
 //    IApplicationState getAppState();
 
     void setPrimary(ShapeColor secondary);
@@ -36,5 +37,8 @@ public interface IShapeProperties {
     void setShapeType(ShapeType shapeType);
     void setStartPoint(Points startPoint);
     void setEndPoint(Points endPoint);
+    void draw(Graphics2D graphics2D);
+
+
 
 }

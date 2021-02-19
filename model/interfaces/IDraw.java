@@ -1,14 +1,14 @@
 package model.interfaces;
 
 import StaticShapeFactory.IShapeProperties;
+import StaticShapeFactory.ShapeProperties;
 import main.CreateShapeCmd;
 import view.interfaces.PaintCanvasBase;
 
 import java.awt.*;
 
 public interface IDraw {
-    void draw(Graphics2D graphics2D);
+    void draw(Graphics graphics);
 
-    IShapeProperties getProps();
 
 }

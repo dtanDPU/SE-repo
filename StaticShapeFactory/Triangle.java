@@ -11,7 +11,6 @@ import java.awt.*;
 public class Triangle implements IDraw {
 
     Color primary, secondary;
-    PaintCanvasBase paintCanvasBase;
     IShapeProperties shapeProperties;
     ShapeShadingType shadingType;
     int width, height;
@@ -19,7 +18,7 @@ public class Triangle implements IDraw {
     int[] X, Y;
 
 
-    public Triangle( IShapeProperties shapeProperties) {
+    public Triangle(IShapeProperties shapeProperties) {
         this.primary = ColorMap.getTheColor(shapeProperties.getPrimary());
         this.secondary = ColorMap.getTheColor(shapeProperties.getSecondary());
         this.shapeProperties = shapeProperties;
@@ -29,13 +28,15 @@ public class Triangle implements IDraw {
         this.startPoint = shapeProperties.getStartPoint();
         this.endPoint = shapeProperties.getEndPoint();
 
-        X = new int[]{shapeProperties.getStartX(), shapeProperties.getEndX(), shapeProperties.getStartX()};
-        Y = new int[]{shapeProperties.getStartY(), shapeProperties.getEndY(), shapeProperties.getEndY()};
 
     }
 
-    public void draw(Graphics2D graphics2D) {
-        graphics2D = paintCanvasBase.getGraphics2D();
+    public void draw(Graphics graphics) {
+
+        int[] X = {startPoint.getX(), startPoint.getX(), + width, startPoint.getX()};
+        int[] Y = {startPoint.getY(), startPoint.getY() + height ,  + height};
+
+        Graphics2D graphics2D = (Graphics2D) graphics;
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
@@ -53,9 +54,6 @@ public class Triangle implements IDraw {
                 graphics2D.drawPolygon(X,Y,3);
             }
         }
-    }
-    public IShapeProperties getProps() {
-        return shapeProperties;
     }
 
 

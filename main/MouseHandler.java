@@ -17,11 +17,8 @@ public class MouseHandler extends MouseAdapter {
     Points startPoint, endPoint;
     ShapeList shapeList;
     ShapeProperties shapeProps;
-
     int x, y;
-    int height, width;
     public IApplicationState applicationState;
-//    IShapeList iShapeList;
 
 
     public MouseHandler(PaintCanvasBase canvasBase, ShapeList shapeList, IApplicationState applicationState) {
