@@ -22,8 +22,8 @@ public class ApplicationState implements IApplicationState {
     private ShapeColor activeSecondaryColor;
     private ShapeShadingType activeShapeShadingType;
     private MouseMode activeMouseMode;
-    int height, width;
-    Points startPoint, endPoint;
+//    int height, width;
+//    Points startPoint, endPoint;
     IApplicationState applicationState;
     ShapeType shapeType;
     ShapeColor primary, secondary;
@@ -43,10 +43,10 @@ public class ApplicationState implements IApplicationState {
         shapeProperties.setShapeType(activeShapeType);
         shapeProperties.setSecondary(activeSecondaryColor);
         shapeProperties.setShadeType(activeShapeShadingType);
-        shapeProperties.setHeight(height);
-        shapeProperties.setWidth(width);
-        shapeProperties.setEndPoint(endPoint);
-        shapeProperties.setStartPoint(startPoint);
+//        shapeProperties.setHeight(height);
+//        shapeProperties.setWidth(width);
+//        shapeProperties.setEndPoint(endPoint);
+//        shapeProperties.setStartPoint(startPoint);
         return shapeProperties;
     }
 

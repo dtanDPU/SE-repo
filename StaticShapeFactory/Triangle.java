@@ -17,10 +17,12 @@ public class Triangle implements IDraw {
     Points startPoint, endPoint;
     int[] X, Y;
 
+    private static ColorMap colorMap = new ColorMap();
+
 
     public Triangle(IShapeProperties shapeProperties) {
-        this.primary = ColorMap.getTheColor(shapeProperties.getPrimary());
-        this.secondary = ColorMap.getTheColor(shapeProperties.getSecondary());
+        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
+        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
         this.shapeProperties = shapeProperties;
         this.shadingType = shapeProperties.getShadeType();
         this.width = shapeProperties.getWidth();

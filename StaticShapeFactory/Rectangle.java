@@ -15,10 +15,12 @@ public class Rectangle implements IDraw {
     Points startPoint, endPoint;
     int width, height;
 
+    private static final ColorMap colorMap = new ColorMap();
+
     public Rectangle(IShapeProperties shapeProperties) {
         this.shapeProperties = shapeProperties;
-        this.primary = ColorMap.getTheColor(shapeProperties.getPrimary());
-        this.secondary = ColorMap.getTheColor(shapeProperties.getSecondary());
+        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
+        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
         this.shadingType = shapeProperties.getShadeType();
         this.startPoint = shapeProperties.getStartPoint();
         this.endPoint = shapeProperties.getEndPoint();

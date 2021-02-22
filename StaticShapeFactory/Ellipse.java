@@ -15,9 +15,11 @@ public class Ellipse implements IDraw {
     Points startPoint, endPoint;
     int width, height;
 
+    private static ColorMap colorMap = new ColorMap();
+
     public Ellipse(IShapeProperties shapeProperties) {
-        this.primary = ColorMap.getTheColor(shapeProperties.getPrimary());
-        this.secondary = ColorMap.getTheColor(shapeProperties.getSecondary());
+        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
+        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
         this.shapeProperties = shapeProperties;
         this.shadingType = shapeProperties.getShadeType();
         this.startPoint = shapeProperties.getStartPoint();

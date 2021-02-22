@@ -21,7 +21,6 @@ public class ShapeProperties implements IShapeProperties{
 
 
     public Points getStartPoint() {
-        System.out.println("getstartpoint test");
         return startPoint;
     }
     public Points getEndPoint() {

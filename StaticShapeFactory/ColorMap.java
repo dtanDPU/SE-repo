@@ -27,7 +27,7 @@ public class ColorMap {
 
     //need a method to get the colors out
 
-    public static Color getTheColor(ShapeColor colorMap) {
+    public Color getTheColor(ShapeColor colorMap) {
         return map.get(colorMap);
     }
 

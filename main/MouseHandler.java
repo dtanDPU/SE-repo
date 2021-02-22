@@ -32,7 +32,10 @@ public class MouseHandler extends MouseAdapter {
     public void mousePressed(MouseEvent e) {
 //        int startPointX = e.getX();
 //        int startPointY = e.getY();
+        shapeProps = applicationState.getShapeProps();
+
         startPoint = new Points(e.getX(), e.getY());
+        shapeProps.setStartPoint(startPoint);
         System.out.println("Start: " + "(" + startPoint.getX() + "," + startPoint.getY() + ")");
     }
 
@@ -41,11 +44,15 @@ public class MouseHandler extends MouseAdapter {
 //        int endPointX = e.getX();
 //        int endPointY = e.getY();
         endPoint = new Points(e.getX(), e.getY());
+        shapeProps.setEndPoint(endPoint);
         System.out.println("End: " + "(" + endPoint.getX() + "," + endPoint.getY() + ")");
 
         // calculates width/height of the rectangle
         x = Math.min(startPoint.getX(), endPoint.getX());
         y = Math.min(startPoint.getY(), endPoint.getY());
+
+        shapeProps.setWidth(x);
+        shapeProps.setHeight(y);
 //        width = Math.abs(endPoint.getX() - startPoint.getX());
 //        height = Math.abs(endPoint.getY() - startPoint.getY());
         // this draws the actual rectangle out using the mouse click and drag
