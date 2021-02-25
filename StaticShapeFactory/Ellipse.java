@@ -12,7 +12,7 @@ public class Ellipse implements IDraw {
     Color primary, secondary;
     IShapeProperties shapeProperties;
     ShapeShadingType shadingType;
-    Points startPoint, endPoint;
+    Points startPoint, endPoint, newStart, newEnd;
     int width, height;
 
     private static ColorMap colorMap = new ColorMap();
@@ -26,6 +26,8 @@ public class Ellipse implements IDraw {
         this.endPoint = shapeProperties.getEndPoint();
         this.width = shapeProperties.getWidth();
         this.height = shapeProperties.getHeight();
+        this.newEnd = shapeProperties.getNewEndPoint();
+        this.newStart = shapeProperties.getNewStartPoint();
     }
 
 
@@ -36,19 +38,27 @@ public class Ellipse implements IDraw {
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
-                graphics2D.setColor(primary);
-                graphics2D.fillOval(startPoint.getX(), startPoint.getY(), width, height);
+                graphics.setColor(primary);
+                graphics.fillOval(startPoint.getX(), startPoint.getY(), width, height);
             }
             case "OUTLINE" -> {
-                graphics2D.setColor(primary);
-                graphics2D.drawOval(startPoint.getX(), startPoint.getY(), width, height);
+                graphics.setColor(primary);
+                graphics.drawOval(startPoint.getX(), startPoint.getY(), width, height);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
-                graphics2D.setColor(primary);
-                graphics2D.fillOval(startPoint.getX(), startPoint.getY(), width, height);
-                graphics2D.setColor(secondary);
-                graphics2D.drawOval(startPoint.getX(), startPoint.getY(), width, height);
+                graphics.setColor(primary);
+                graphics.drawOval(startPoint.getX(), startPoint.getY(), width, height);
+                graphics.setColor(secondary);
+                graphics.fillOval(startPoint.getX(), startPoint.getY(), width, height);
             }
         }
+    }
+
+
+    public boolean shapeCollision(Points points) {
+        return (points.getX() + shapeProperties.getWidth() > newStart.getX() &&
+                points.getY() + shapeProperties.getHeight() > newStart.getY() &&
+                points.getX() > newStart.getX() + shapeProperties.getWidth() &&
+                points.getY() > newStart.getY() + shapeProperties.getHeight());
     }
 }

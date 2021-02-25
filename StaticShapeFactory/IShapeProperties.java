@@ -38,6 +38,8 @@ public interface IShapeProperties {
     void setStartPoint(Points startPoint);
     void setEndPoint(Points endPoint);
     void draw(Graphics2D graphics2D);
+    Points getNewStartPoint();
+    Points getNewEndPoint();
 
 
 

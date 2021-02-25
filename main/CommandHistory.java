@@ -10,24 +10,22 @@ class CommandHistory {
 		undoStack.push(cmd);
 		redoStack.clear();
 	}
-	
-	public static boolean undo() {
+
+	public static void undo() {
 		boolean result = !undoStack.empty();
 		if (result) {
 			IUndoable c = undoStack.pop();
 			redoStack.push(c);
 			c.undo();
 		}
-		return result;
 	}
 
-	public static boolean redo() {
+	public static void redo() {
 		boolean result = !redoStack.empty();
 		if (result) {
 			IUndoable c = redoStack.pop();
 			undoStack.push(c);
 			c.redo();
 		}
-		return result;
 	}
 }

@@ -5,26 +5,30 @@ import model.interfaces.IObserver;
 import model.persistence.DrawShape;
 import view.interfaces.ISubject;
 import view.interfaces.PaintCanvasBase;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeList implements ISubject {
     ArrayList<IDraw> shapeList ;
-    List<IObserver> observers ;
+    List<IObserver> observersList ;
+    ArrayList<IDraw> selectedList;
 
     public ShapeList() {
         shapeList = new ArrayList<>();
-        observers = new ArrayList<>();
+        observersList = new ArrayList<>();
+        selectedList = new ArrayList<>();
     }
 
     @Override
     public void register(IObserver observer) {
-        observers.add(observer);
+        observersList.add(observer);
     }
 
     @Override
     public void notifyObserver() {
-        for (IObserver newObserver : observers) {
+        for (IObserver newObserver : observersList) {
             newObserver.update();
         }
     }
@@ -41,6 +45,14 @@ public class ShapeList implements ISubject {
     }
     public ArrayList<IDraw> getShapeList() {
         return shapeList;
+    }
+
+    public ArrayList<IDraw> getSelectedShapeList() {
+        return selectedList;
+    }
+
+    public void setSelectedList(IDraw drawShape){
+        selectedList.add(drawShape);
     }
 
 

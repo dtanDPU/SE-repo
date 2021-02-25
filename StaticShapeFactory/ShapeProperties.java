@@ -26,16 +26,13 @@ public class ShapeProperties implements IShapeProperties{
     public Points getEndPoint() {
         return endPoint;
     }
-
     public int getStartX() {
 
         return startPoint.getX();
     }
-
     public int getStartY() {
         return startPoint.getY();
     }
-
     public int getEndX() {
         return endPoint.getX();
     }

@@ -31,7 +31,7 @@ public class JPaintController implements IJPaintController {
 
         // added undo/redo commands
         uiModule.addEvent(EventName.UNDO, () -> new UndoCommand().run());
-        uiModule.addEvent(EventName.DELETE, () -> new RedoCommand().run());
+        uiModule.addEvent(EventName.REDO, () -> new RedoCommand().run());
 
 
     }

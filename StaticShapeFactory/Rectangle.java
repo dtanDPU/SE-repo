@@ -1,10 +1,8 @@
 package StaticShapeFactory;
 
-import main.CreateShapeCmd;
 import main.Points;
 import model.ShapeShadingType;
 import model.interfaces.IDraw;
-import view.interfaces.PaintCanvasBase;
 
 import java.awt.*;
 
@@ -12,7 +10,7 @@ public class Rectangle implements IDraw {
     Color primary, secondary;
     IShapeProperties shapeProperties;
     ShapeShadingType shadingType;
-    Points startPoint, endPoint;
+    Points startPoint, endPoint, newStart,newEnd;
     int width, height;
 
     private static final ColorMap colorMap = new ColorMap();
@@ -26,6 +24,8 @@ public class Rectangle implements IDraw {
         this.endPoint = shapeProperties.getEndPoint();
         this.width = shapeProperties.getWidth();
         this.height = shapeProperties.getHeight();
+        this.newStart = shapeProperties.getNewStartPoint();
+        this.newEnd = shapeProperties.getNewEndPoint();
     }
 
     public void draw(Graphics graphics) {
@@ -34,19 +34,26 @@ public class Rectangle implements IDraw {
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
-                graphics2D.setColor(primary);
-                graphics2D.fillRect(startPoint.getX(), startPoint.getY(), width, height);
+                graphics.setColor(primary);
+                graphics.fillRect(startPoint.getX(), startPoint.getY(), width, height);
             }
             case "OUTLINE" -> {
-                graphics2D.setColor(primary);
-                graphics2D.drawRect(startPoint.getX(), startPoint.getY(), width, height);
+                graphics.setColor(primary);
+                graphics.drawRect(startPoint.getX(), startPoint.getY(), width, height);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
-                graphics2D.setColor(primary);
-                graphics2D.fillRect(startPoint.getX(), startPoint.getY(), width, height);
-                graphics2D.setColor(secondary);
-                graphics2D.drawRect(startPoint.getX(), startPoint.getY(), width, height);
+                graphics.setColor(primary);
+                graphics.fillRect(startPoint.getX(), startPoint.getY(), width, height);
+                graphics.setColor(secondary);
+                graphics.drawRect(startPoint.getX(), startPoint.getY(), width, height);
             }
         }
+    }
+
+    public boolean shapeCollision(Points points) {
+        return (points.getX() + shapeProperties.getWidth() > newStart.getX() &&
+                points.getY() + shapeProperties.getHeight() > newStart.getY() &&
+                points.getX() > newStart.getX() + shapeProperties.getWidth() &&
+                points.getY() > newStart.getY() + shapeProperties.getHeight());
     }
 }

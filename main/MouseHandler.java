@@ -4,8 +4,11 @@ import StaticShapeFactory.IShapeList;
 import StaticShapeFactory.IShapeProperties;
 import StaticShapeFactory.ShapeList;
 import StaticShapeFactory.ShapeProperties;
+import model.MouseMode;
+import model.dialogs.ChooseStartAndEndPointModeDialog;
 import model.interfaces.IApplicationState;
 import model.persistence.ApplicationState;
+import model.persistence.StartEndPoints;
 import view.interfaces.PaintCanvasBase;
 
 import java.awt.*;
@@ -19,6 +22,7 @@ public class MouseHandler extends MouseAdapter {
     ShapeProperties shapeProps;
     int x, y;
     public IApplicationState applicationState;
+    ICommand cmd;
 
 
     public MouseHandler(PaintCanvasBase canvasBase, ShapeList shapeList, IApplicationState applicationState) {
@@ -60,8 +64,26 @@ public class MouseHandler extends MouseAdapter {
 //        graphics2d.setColor(Color.GREEN);
 //        graphics2d.fillRect(startPoint.getX(), startPoint.getY(), width, height);
 
-        CreateShapeCmd createShapes = new CreateShapeCmd(shapeProps, applicationState, shapeList);
-        createShapes.run();
+        MouseMode mouseMode = applicationState.getActiveMouseMode();
+        switch (mouseMode.toString()) {
+            case "DRAW" -> {
+                CreateShapeCmd createShapes = new CreateShapeCmd(shapeProps, applicationState, shapeList);
+                createShapes.run();
+            }
+            case "SELECT" -> {
+                SelectShapeCmd selectShapeCmd = new SelectShapeCmd(shapeProps, applicationState, shapeList);
+                selectShapeCmd.run();
+            }
+            case "MOVE" -> {
+                MoveShapeCmd moveShapeCmd = new MoveShapeCmd(shapeProps, applicationState, shapeList);
+                moveShapeCmd.run();
+            }
+        }
+
+
+        // original implementation to only draw shape
+//        CreateShapeCmd createShapes = new CreateShapeCmd(shapeProps, applicationState, shapeList);
+//        createShapes.run();
     }
 
 }

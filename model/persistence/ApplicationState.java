@@ -102,6 +102,7 @@ public class ApplicationState implements IApplicationState {
         return activeMouseMode;
     }
 
+
     private void setDefaults() {
         activeShapeType = ShapeType.RECTANGLE;
         activePrimaryColor = ShapeColor.BLUE;

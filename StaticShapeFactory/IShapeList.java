@@ -12,10 +12,6 @@ public interface IShapeList {
     void removeShape(IDraw iDraws);
     ArrayList<IDraw> getShapeList();
 
-    void draw(Graphics2D graphics2D);
-
-
-
     void register(IObserver observer);
     void notifyObserver();
 
