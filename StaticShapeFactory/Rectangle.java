@@ -28,32 +28,47 @@ public class Rectangle implements IDraw {
         this.newEnd = shapeProperties.getNewEndPoint();
     }
 
+
+    // finally got this working by searching how the paintComponent works for all shapes
+    // http://www.java2s.com/Code/JavaAPI/java.awt/BasicStrokeCAPBUTT.htm
     public void draw(Graphics graphics) {
 
         Graphics2D graphics2D = (Graphics2D) graphics;
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
-                graphics.setColor(primary);
-                graphics.fillRect(startPoint.getX(), startPoint.getY(), width, height);
+                graphics2D.setColor(primary);
+//                graphics2D.setStroke(new BasicStroke(3));
+                graphics2D.fillRect(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE" -> {
-                graphics.setColor(primary);
-                graphics.drawRect(startPoint.getX(), startPoint.getY(), width, height);
+                graphics2D.setColor(primary);
+//                graphics2D.setStroke(new BasicStroke(3));
+                graphics2D.drawRect(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
-                graphics.setColor(primary);
-                graphics.fillRect(startPoint.getX(), startPoint.getY(), width, height);
-                graphics.setColor(secondary);
-                graphics.drawRect(startPoint.getX(), startPoint.getY(), width, height);
+                graphics2D.setColor(primary);
+//                graphics2D.setStroke(new BasicStroke(3));
+                graphics2D.fillRect(newStart.getX(), newStart.getY(), width, height);
+                graphics2D.setColor(secondary);
+                graphics2D.drawRect(newStart.getX(), newStart.getY(), width, height);
             }
         }
     }
 
-    public boolean shapeCollision(Points points) {
-        return (points.getX() + shapeProperties.getWidth() > newStart.getX() &&
-                points.getY() + shapeProperties.getHeight() > newStart.getY() &&
-                points.getX() > newStart.getX() + shapeProperties.getWidth() &&
-                points.getY() > newStart.getY() + shapeProperties.getHeight());
+    @Override
+    public void addDX(int dx) {
+        newStart.setX(newStart.getX() + dx);
+        newEnd.setX(newEnd.getX() + dx);
+
     }
+
+    @Override
+    public void addDY(int dy) {
+        newStart.setY(newStart.getY() + dy);
+        newEnd.setY(newEnd.getY() + dy);
+
+    }
+
+
 }

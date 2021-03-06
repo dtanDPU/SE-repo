@@ -19,7 +19,7 @@ public class Main {
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
-//        ShapeProperties shapeProperties = new ShapeProperties();
+        ShapeProperties shapeProperties = new ShapeProperties();
 
         ShapeList shapeList = new ShapeList();
 
@@ -27,7 +27,7 @@ public class Main {
         shapeList.register(drawShape);
 
 
-        IJPaintController controller = new JPaintController(uiModule, appState);
+        IJPaintController controller = new JPaintController(uiModule, appState, shapeProperties, shapeList);
         controller.setup();
 
 

@@ -4,8 +4,6 @@ import main.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
-import model.interfaces.IApplicationState;
-import model.interfaces.IDraw;
 import view.interfaces.PaintCanvasBase;
 
 import java.awt.*;
@@ -18,6 +16,7 @@ public class ShapeProperties implements IShapeProperties{
     private Points startPoint, endPoint;
     private int width, height;
     PaintCanvasBase paintCanvasBase;
+    Points newStartPoint, newEndPoint;
 
 
     public Points getStartPoint() {
@@ -103,11 +102,22 @@ public class ShapeProperties implements IShapeProperties{
         int endY = Math.max(startPoint.getY(), endPoint.getY());
         return new Points(endX, endY);
     }
+
     @Override
     public void draw(Graphics2D graphics2D){
 
     }
+    public void setNewStartPoint() {
+    }
 
+    public void setNewEndPoint() {
 
+    }
 
+//    public void movingS(int dx, int dy) {
+//        Points newStart = new Points(startPoint.getX()+dx, startPoint.getY()+dy);
+//        Points newEnd = new Points(endPoint.getX()+dx,endPoint.getY()+dy);
+//        startPoint = newStart;
+//        endPoint = newEnd;
+//    }
 }

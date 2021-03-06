@@ -1,10 +1,12 @@
 package model.interfaces;
 
 import StaticShapeFactory.ShapeProperties;
+import main.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
 import model.MouseMode;
+import model.persistence.StartEndPoints;
 
 public interface IApplicationState {
     void setActiveShape();
@@ -24,8 +26,15 @@ public interface IApplicationState {
     ShapeColor getActiveSecondaryColor();
 
     ShapeShadingType getActiveShapeShadingType();
+    
+    ShapeProperties getShapeProps();
+
+//    Points getNewEndPoint();
+//
+//    Points getNewStartPoint();
 
     MouseMode getActiveMouseMode();
 
-    ShapeProperties getShapeProps();
+//    Points getStartPoint();
+//    Points getEndPoint();
 }

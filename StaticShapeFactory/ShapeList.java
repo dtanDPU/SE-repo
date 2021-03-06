@@ -2,23 +2,21 @@ package StaticShapeFactory;
 
 import model.interfaces.IDraw;
 import model.interfaces.IObserver;
-import model.persistence.DrawShape;
 import view.interfaces.ISubject;
-import view.interfaces.PaintCanvasBase;
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeList implements ISubject {
-    ArrayList<IDraw> shapeList ;
-    List<IObserver> observersList ;
-    ArrayList<IDraw> selectedList;
+    ArrayList<IDraw> shapeListArray ;
+    ArrayList<IObserver> observersList ;
+    ArrayList<IDraw> selectedListArray;
+    ArrayList<IDraw> copyList;
 
     public ShapeList() {
-        shapeList = new ArrayList<>();
+        shapeListArray = new ArrayList<>();
         observersList = new ArrayList<>();
-        selectedList = new ArrayList<>();
+        selectedListArray = new ArrayList<>();
+        copyList = new ArrayList<>();
     }
 
     @Override
@@ -34,25 +32,33 @@ public class ShapeList implements ISubject {
     }
 
     public void addShape(IDraw drawShape){
-        shapeList.add(drawShape);
+        shapeListArray.add(drawShape);
         notifyObserver();
 
     }
     public void removeShape(IDraw drawShape) {
-        shapeList.remove(drawShape);
+        shapeListArray.remove(drawShape);
         notifyObserver();
 
     }
     public ArrayList<IDraw> getShapeList() {
-        return shapeList;
+        return shapeListArray;
     }
 
     public ArrayList<IDraw> getSelectedShapeList() {
-        return selectedList;
+        return selectedListArray;
     }
 
-    public void setSelectedList(IDraw drawShape){
-        selectedList.add(drawShape);
+    public void addSelectedList(IDraw shapes){
+        selectedListArray.add(shapes);
+    }
+
+    public void clearSelectedList(){
+        selectedListArray.clear();
+    }
+
+    public ArrayList<IDraw> getCopy() {
+        return copyList;
     }
 
 

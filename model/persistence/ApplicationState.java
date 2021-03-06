@@ -22,12 +22,13 @@ public class ApplicationState implements IApplicationState {
     private ShapeColor activeSecondaryColor;
     private ShapeShadingType activeShapeShadingType;
     private MouseMode activeMouseMode;
-//    int height, width;
-//    Points startPoint, endPoint;
+    int height, width;
+    Points startPoint, endPoint;
     IApplicationState applicationState;
     ShapeType shapeType;
     ShapeColor primary, secondary;
     ShapeShadingType shadeType;
+    Points newStartPoint, newEndPoint;
 
 
     public ApplicationState(IUiModule uiModule) {
@@ -35,22 +36,6 @@ public class ApplicationState implements IApplicationState {
         this.dialogProvider = new DialogProvider(this);
         setDefaults();
     }
-
-    public ShapeProperties getShapeProps() {
-        ShapeProperties shapeProperties = new ShapeProperties();
-
-        shapeProperties.setPrimary(activePrimaryColor);
-        shapeProperties.setShapeType(activeShapeType);
-        shapeProperties.setSecondary(activeSecondaryColor);
-        shapeProperties.setShadeType(activeShapeShadingType);
-//        shapeProperties.setHeight(height);
-//        shapeProperties.setWidth(width);
-//        shapeProperties.setEndPoint(endPoint);
-//        shapeProperties.setStartPoint(startPoint);
-        return shapeProperties;
-    }
-
-
 
     @Override
     public void setActiveShape() {
@@ -75,6 +60,7 @@ public class ApplicationState implements IApplicationState {
     @Override
     public void setActiveStartAndEndPointMode() {
         activeMouseMode = uiModule.getDialogResponse(dialogProvider.getChooseStartAndEndPointModeDialog());
+
     }
 
     @Override
@@ -97,6 +83,7 @@ public class ApplicationState implements IApplicationState {
         return activeShapeShadingType;
     }
 
+
     @Override
     public MouseMode getActiveMouseMode() {
         return activeMouseMode;
@@ -110,4 +97,50 @@ public class ApplicationState implements IApplicationState {
         activeShapeShadingType = ShapeShadingType.FILLED_IN;
         activeMouseMode = MouseMode.DRAW;
     }
+
+//    public Points getNewStartPoint() {
+//        int startX = Math.min(startPoint.getX(), endPoint.getX());
+//        int startY = Math.min(startPoint.getY(), endPoint.getY());
+//        newStartPoint = new Points(startX, startY);
+//        return newStartPoint;
+//    }
+//    public Points getNewEndPoint() {
+//        int endX = Math.max(startPoint.getX(), endPoint.getX());
+//        int endY = Math.max(startPoint.getY(), endPoint.getY());
+//        newEndPoint = new Points(endX, endY);
+//        return newEndPoint;
+//    }
+//    public Points getStartPoint() {
+//        return startPoint;
+//    }
+//
+//    public Points getEndPoint() {
+//        return endPoint;
+//    }
+
+//    public void setNewStartPoint(Points newStartPoint){
+//        this.newStartPoint = newStartPoint;
+//    }
+//    public void setNewEndPoint(Points newEndPoint){
+//        this.newEndPoint = newEndPoint;
+//    }
+
+    public ShapeProperties getShapeProps() {
+        ShapeProperties shapeProperties = new ShapeProperties();
+        shapeProperties.setPrimary(activePrimaryColor);
+        shapeProperties.setShapeType(activeShapeType);
+        shapeProperties.setSecondary(activeSecondaryColor);
+        shapeProperties.setShadeType(activeShapeShadingType);
+        shapeProperties.setHeight(height);
+        shapeProperties.setWidth(width);
+        shapeProperties.setStartPoint(startPoint);
+        shapeProperties.setEndPoint(endPoint);
+        shapeProperties.setNewEndPoint();
+        shapeProperties.setNewStartPoint();
+        return shapeProperties;
+    }
+
+
+
+
 }

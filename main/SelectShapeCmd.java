@@ -11,35 +11,56 @@ public class SelectShapeCmd implements ICommand {
     public ShapeProperties shapeProps;
     public IApplicationState applicationState;
     ShapeList shapeList;
-    IDraw selectShape;
-    Boolean shapeSelected = false;
+    ISubject selectedShapeList;
+    IDraw selectedShape;
+    Boolean ifShapeSelected = false;
+    Points newStart;
+
 
 
     public SelectShapeCmd(ShapeProperties shapeProps, IApplicationState applicationState, ISubject selectList) {
 
         this.shapeProps = shapeProps;
         this.applicationState = applicationState;
+        this.selectedShapeList = selectList;
+        this.newStart = shapeProps.getNewStartPoint();
+//        this.start = start;
+//        this.end = end;
+
 
     }
 
     @Override
     public void run() {
-        System.out.println("select test");
+        selectedShapeList.clearSelectedList();
 
+        for(IDraw shapes : selectedShapeList.getShapeList()) {
+            System.out.println("select test");
 
+            if(shapeCollision((shapeProps.getNewEndPoint()))) {
+                ifShapeSelected = true;
+                selectedShape = shapes;
+                selectedShapeList.addSelectedList(selectedShape);
 
-        for(IDraw shape : shapeList.getShapeList()){
-            if(shape.shapeCollision(shapeProps.getNewEndPoint()) ){
-                shapeSelected = true;
-                selectShape = shape;
-                shapeList.setSelectedList(selectShape);
-                break;
+                System.out.println("Selected shape test: " + selectedShapeList.getSelectedShapeList());
             }
-            else{
-                shapeSelected = false;
+            else {
+                ifShapeSelected = false;
             }
         }
+//        if(!ifShapeSelected) {
+//            selectedShapeList.clearSelectedList();
+//        }
 
+    }
+
+    //shape collision from link and discussion board
+    // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
+    public boolean shapeCollision(Points points) {
+        return (points.getX() + shapeProps.getWidth() > newStart.getX() &&
+                points.getY() + shapeProps.getHeight() > newStart.getY() &&
+                points.getX() > newStart.getX() + shapeProps.getWidth() &&
+                points.getY() > newStart.getY() + shapeProps.getHeight());
     }
 }
 

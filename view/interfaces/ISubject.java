@@ -12,7 +12,9 @@ public interface ISubject {
     void notifyObserver();
     ArrayList<IDraw> getSelectedShapeList();
     ArrayList<IDraw> getShapeList();
-    void setSelectedList(IDraw drawShape);
-
+    void addSelectedList(IDraw drawShape);
+    void clearSelectedList();
+    void removeShape(IDraw drawShape);
+    ArrayList<IDraw> getCopy();
 
 }

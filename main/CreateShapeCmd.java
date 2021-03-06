@@ -22,7 +22,7 @@ public class CreateShapeCmd implements ICommand, IUndoable{
 
     @Override
     public void run() {
-        System.out.println("creating");
+//        System.out.println("creating");
         ShapeFactory shapeFactory = new ShapeFactory();
         iDrawShape = shapeFactory.makeShape(shapeProps);
         shapeList.addShape(iDrawShape);

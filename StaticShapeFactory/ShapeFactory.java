@@ -14,15 +14,15 @@ public class ShapeFactory {
         switch (shapeType.toString()) {
             case "RECTANGLE" -> {
                 iDraw = new Rectangle(shapeProperties);
-                System.out.println("reaches rect");
+//                System.out.println("reaches rect");
             }
             case "ELLIPSE" -> {
                 iDraw = new Ellipse(shapeProperties);
-                System.out.println("reaches ellipse");
+//                System.out.println("reaches ellipse");
             }
             case "TRIANGLE" -> {
                 iDraw = new Triangle(shapeProperties);
-                System.out.println("reaches triangle");
+//                System.out.println("reaches triangle");
             }
             default -> System.out.println("Null Shape");
         }

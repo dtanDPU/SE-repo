@@ -38,27 +38,33 @@ public class Ellipse implements IDraw {
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
-                graphics.setColor(primary);
-                graphics.fillOval(startPoint.getX(), startPoint.getY(), width, height);
+                graphics2D.setColor(primary);
+                graphics2D.fillOval(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE" -> {
-                graphics.setColor(primary);
-                graphics.drawOval(startPoint.getX(), startPoint.getY(), width, height);
+                graphics2D.setColor(primary);
+                graphics2D.drawOval(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
-                graphics.setColor(primary);
-                graphics.drawOval(startPoint.getX(), startPoint.getY(), width, height);
-                graphics.setColor(secondary);
-                graphics.fillOval(startPoint.getX(), startPoint.getY(), width, height);
+                graphics2D.setColor(secondary);
+                graphics2D.drawOval(newStart.getX(), newStart.getY(), width, height);
+                graphics2D.setColor(primary);
+                graphics2D.fillOval(newStart.getX(), newStart.getY(), width, height);
             }
         }
     }
 
-
-    public boolean shapeCollision(Points points) {
-        return (points.getX() + shapeProperties.getWidth() > newStart.getX() &&
-                points.getY() + shapeProperties.getHeight() > newStart.getY() &&
-                points.getX() > newStart.getX() + shapeProperties.getWidth() &&
-                points.getY() > newStart.getY() + shapeProperties.getHeight());
+    @Override
+    public void addDX(int dx) {
+        newStart.setX(newStart.getX() + dx);
+        newEnd.setX(newEnd.getX() + dx);
     }
+
+    @Override
+    public void addDY(int dy) {
+        newStart.setY(newStart.getY() + dy);
+        newStart.setY(newStart.getY() + dy);
+
+    }
+
 }

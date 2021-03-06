@@ -4,10 +4,7 @@ import main.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
-import model.interfaces.IApplicationState;
-import model.interfaces.IDraw;
 import view.interfaces.PaintCanvasBase;
-
 import java.awt.*;
 
 public interface IShapeProperties {
@@ -40,7 +37,6 @@ public interface IShapeProperties {
     void draw(Graphics2D graphics2D);
     Points getNewStartPoint();
     Points getNewEndPoint();
-
 
 
 }

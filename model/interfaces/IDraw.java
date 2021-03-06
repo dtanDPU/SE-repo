@@ -10,7 +10,9 @@ import java.awt.*;
 
 public interface IDraw {
     void draw(Graphics graphics);
-    boolean shapeCollision(Points points);
+//    boolean shapeCollision(Points points);
+    void addDX(int dx);
+    void addDY(int dy);
 
 
 }
