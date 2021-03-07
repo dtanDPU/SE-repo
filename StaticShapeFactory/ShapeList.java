@@ -61,6 +61,10 @@ public class ShapeList implements ISubject {
         return copyList;
     }
 
+    public void getCopiedShapeList (IDraw shape) {
+        copyList.add(shape);
+    }
+
 
 }
 

@@ -62,7 +62,8 @@ public class MoveShapeCmd implements ICommand, IUndoable{
 
     @Override
     public void redo() {
-        selectShapeList.addShape(newS);
+//        selectShapeList.addShape(newS);
+        run();
 
     }
 }

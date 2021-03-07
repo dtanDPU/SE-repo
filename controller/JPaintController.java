@@ -2,10 +2,7 @@ package controller;
 
 import StaticShapeFactory.ShapeList;
 import StaticShapeFactory.ShapeProperties;
-import main.CopyCmd;
-import main.PasteCmd;
-import main.RedoCommand;
-import main.UndoCommand;
+import main.*;
 import model.interfaces.IApplicationState;
 import view.EventName;
 import view.interfaces.ISubject;
@@ -47,7 +44,7 @@ public class JPaintController implements IJPaintController {
         uiModule.addEvent(EventName.PASTE, () -> new PasteCmd(selectShapeList, shapeProperties).run());
 //        uiModule.addEvent(EventName.UNGROUP, () -> new RedoCommand().run());
 //        uiModule.addEvent(EventName.GROUP, () -> new RedoCommand().run());
-//        uiModule.addEvent(EventName.DELETE, () -> new RedoCommand().run());
+        uiModule.addEvent(EventName.DELETE, () -> new DeleteCmd(selectShapeList, shapeProperties).run());
 
 
     }

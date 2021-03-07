@@ -16,5 +16,6 @@ public interface ISubject {
     void clearSelectedList();
     void removeShape(IDraw drawShape);
     ArrayList<IDraw> getCopy();
+    void getCopiedShapeList (IDraw shape);
 
 }

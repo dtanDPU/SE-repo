@@ -3,6 +3,7 @@ package StaticShapeFactory;
 import main.Points;
 import model.ShapeShadingType;
 import model.interfaces.IDraw;
+import model.persistence.ApplicationState;
 
 import java.awt.*;
 
@@ -12,6 +13,7 @@ public class Rectangle implements IDraw {
     ShapeShadingType shadingType;
     Points startPoint, endPoint, newStart,newEnd;
     int width, height;
+    ApplicationState applicationState;
 
     private static final ColorMap colorMap = new ColorMap();
 
@@ -26,6 +28,7 @@ public class Rectangle implements IDraw {
         this.height = shapeProperties.getHeight();
         this.newStart = shapeProperties.getNewStartPoint();
         this.newEnd = shapeProperties.getNewEndPoint();
+
     }
 
 
@@ -37,21 +40,21 @@ public class Rectangle implements IDraw {
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
-                graphics2D.setColor(primary);
-//                graphics2D.setStroke(new BasicStroke(3));
-                graphics2D.fillRect(newStart.getX(), newStart.getY(), width, height);
+                graphics.setColor(primary);
+                graphics2D.setStroke(new BasicStroke(5));
+                graphics.fillRect(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE" -> {
-                graphics2D.setColor(primary);
-//                graphics2D.setStroke(new BasicStroke(3));
-                graphics2D.drawRect(newStart.getX(), newStart.getY(), width, height);
+                graphics.setColor(primary);
+                graphics2D.setStroke(new BasicStroke(5));
+                graphics.drawRect(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
-                graphics2D.setColor(primary);
-//                graphics2D.setStroke(new BasicStroke(3));
-                graphics2D.fillRect(newStart.getX(), newStart.getY(), width, height);
-                graphics2D.setColor(secondary);
-                graphics2D.drawRect(newStart.getX(), newStart.getY(), width, height);
+                graphics.setColor(primary);
+                graphics2D.setStroke(new BasicStroke(5));
+                graphics.fillRect(newStart.getX(), newStart.getY(), width, height);
+                graphics.setColor(secondary);
+                graphics.drawRect(newStart.getX(), newStart.getY(), width, height);
             }
         }
     }

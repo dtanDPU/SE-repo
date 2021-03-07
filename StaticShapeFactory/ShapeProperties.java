@@ -12,7 +12,7 @@ import java.awt.*;
 public class ShapeProperties implements IShapeProperties{
     private ShapeType shapeType;
     private ShapeColor primary, secondary;
-    private ShapeShadingType shadeType;
+    private ShapeShadingType shapeShadingType;
     private Points startPoint, endPoint;
     private int width, height;
     PaintCanvasBase paintCanvasBase;
@@ -51,7 +51,7 @@ public class ShapeProperties implements IShapeProperties{
         return secondary;
     }
     public ShapeShadingType getShadeType() {
-        return shadeType;
+        return shapeShadingType;
     }
     public ShapeType getShapeType() {
         return shapeType;
@@ -66,7 +66,7 @@ public class ShapeProperties implements IShapeProperties{
         this.secondary = secondary;
     }
     public void setShadeType(ShapeShadingType shadeType) {
-        this.shadeType = shadeType;
+        this.shapeShadingType = shadeType;
     }
     public void setHeight(int height) {
         this.height = height;
