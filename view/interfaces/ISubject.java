@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public interface ISubject {
 
     void addShape(IDraw drawShape);
+
     void register(IObserver observer);
     void notifyObserver();
     ArrayList<IDraw> getSelectedShapeList();
@@ -15,7 +16,14 @@ public interface ISubject {
     void addSelectedList(IDraw drawShape);
     void clearSelectedList();
     void removeShape(IDraw drawShape);
+
     ArrayList<IDraw> getCopy();
     void getCopiedShapeList (IDraw shape);
+    void copyRemove();
+
+    ArrayList<IDraw> getGroupList();
+    void addGroupList(IDraw shape);
+
+
 
 }

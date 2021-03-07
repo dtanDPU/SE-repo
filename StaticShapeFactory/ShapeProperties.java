@@ -16,7 +16,7 @@ public class ShapeProperties implements IShapeProperties{
     private Points startPoint, endPoint;
     private int width, height;
     PaintCanvasBase paintCanvasBase;
-    Points newStartPoint, newEndPoint;
+    boolean ifSelected;
 
 
     public Points getStartPoint() {
@@ -38,6 +38,19 @@ public class ShapeProperties implements IShapeProperties{
     public int getEndY() {
         return endPoint.getY();
     }
+
+//    public int getHeight() {
+//        newStartPoint = getNewStartPoint();
+//        newEndPoint = getNewEndPoint();
+//        return newEndPoint.getY() - newStartPoint.getY();
+//    }
+//    public int getWidth() {
+//        newStartPoint = getNewStartPoint();
+//        newEndPoint = getNewEndPoint();
+//        return newEndPoint.getX() - newStartPoint.getX();
+//    }
+//
+
     public int getHeight() {
         return height;
     }
@@ -96,7 +109,6 @@ public class ShapeProperties implements IShapeProperties{
         return new Points(startX, startY);
     }
 
-
     public Points getNewEndPoint() {
         int endX = Math.max(startPoint.getX(), endPoint.getX());
         int endY = Math.max(startPoint.getY(), endPoint.getY());
@@ -114,10 +126,17 @@ public class ShapeProperties implements IShapeProperties{
 
     }
 
-//    public void movingS(int dx, int dy) {
-//        Points newStart = new Points(startPoint.getX()+dx, startPoint.getY()+dy);
-//        Points newEnd = new Points(endPoint.getX()+dx,endPoint.getY()+dy);
-//        startPoint = newStart;
-//        endPoint = newEnd;
-//    }
+    public void selected () {
+        this.ifSelected = true;
+    }
+
+    public void notSelected() {
+        this.ifSelected = false;
+    }
+
+    public boolean ifSelected() {
+        return this.ifSelected;
+    }
+
+
 }

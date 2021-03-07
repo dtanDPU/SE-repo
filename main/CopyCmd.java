@@ -16,8 +16,9 @@ public class CopyCmd implements ICommand{
 
     @Override
     public void run() {
+//        selectShapeList.copyRemove();
+
         for(IDraw shape : selectShapeList.getSelectedShapeList()) {
-            //tried selectShapeList.addShape(shape) first, realized that adds to select not to the copied list
             selectShapeList.getCopiedShapeList(shape);
             System.out.println("Copy: " + selectShapeList.getSelectedShapeList());
         }

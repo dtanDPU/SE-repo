@@ -2,7 +2,6 @@ package model.persistence;
 
 import StaticShapeFactory.ColorMap;
 import StaticShapeFactory.ShapeList;
-import StaticShapeFactory.ShapeProperties;
 import model.ShapeColor;
 import model.interfaces.IDraw;
 import model.interfaces.IObserver;
@@ -14,7 +13,6 @@ public class DrawShape implements IObserver {
 
     PaintCanvasBase paintCanvas;
     ShapeList shapeList;
-    ShapeProperties shapeProperties;
 
     private static ColorMap colorMap = new ColorMap();
 

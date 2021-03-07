@@ -11,50 +11,47 @@ import java.util.ArrayList;
 public class MoveShapeCmd implements ICommand, IUndoable{
 
     public ShapeProperties shapeProps;
-    public IApplicationState applicationState;
-    IDraw oldS;
+    IDraw OGshape;
     IDraw newS;
     ArrayList<IDraw> moveShapeList;
     ISubject selectShapeList;
-    int width, height;
+    int X, Y;
 
-    public MoveShapeCmd(ShapeProperties shapeProps, IApplicationState applicationState, ISubject selectShapeList) {
+    public MoveShapeCmd(ShapeProperties shapeProps, ISubject selectShapeList) {
 
         this.shapeProps = shapeProps;
-        this.applicationState = applicationState;
         this.selectShapeList = selectShapeList;
-        this.width = shapeProps.getEndPoint().getX() - shapeProps.getStartPoint().getX();
-        this.height = shapeProps.getEndPoint().getY() - shapeProps.getStartPoint().getY();
         this.moveShapeList = new ArrayList<>();
+        this.X = shapeProps.getEndPoint().getX() - shapeProps.getStartPoint().getX();
+        this.Y = shapeProps.getEndPoint().getY() - shapeProps.getStartPoint().getY();
 
     }
 
     @Override
     public void run() {
-        for(IDraw collision : selectShapeList.getSelectedShapeList()){
-            oldS = collision;
-            moveShapeList.add(oldS);
-            selectShapeList.removeShape(oldS);
+
+        for(IDraw shape : selectShapeList.getSelectedShapeList()){
+            OGshape = shape;
+            moveShapeList.add(OGshape);
+            selectShapeList.removeShape(OGshape);
 
             for(IDraw shapeStore : moveShapeList){
-                shapeStore.addDX(width);
-                shapeStore.addDY(height);
+                shapeStore.addDX(X);
+                shapeStore.addDY(Y);
                 newS = shapeStore;
                 selectShapeList.addShape(newS);
             }
         }
         CommandHistory.add(this);
-        System.out.println("# Moved " + selectShapeList.getSelectedShapeList().size());
-
     }
 
     @Override
     public void undo() {
 
     //  inverse of moving from above code
-        for(IDraw shapeStore : moveShapeList) {
-            shapeStore.addDX(-width);
-            shapeStore.addDY(-height);
+        for(IDraw shapeStore : selectShapeList.getSelectedShapeList()) {
+            shapeStore.addDX(-X);
+            shapeStore.addDY(-Y);
             newS = shapeStore;
             selectShapeList.addShape(newS);
         }

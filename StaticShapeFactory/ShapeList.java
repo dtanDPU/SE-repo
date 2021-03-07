@@ -11,12 +11,15 @@ public class ShapeList implements ISubject {
     ArrayList<IObserver> observersList ;
     ArrayList<IDraw> selectedListArray;
     ArrayList<IDraw> copyList;
+    ArrayList<IDraw> groupList;
+
 
     public ShapeList() {
         shapeListArray = new ArrayList<>();
         observersList = new ArrayList<>();
         selectedListArray = new ArrayList<>();
         copyList = new ArrayList<>();
+        groupList = new ArrayList<>();
     }
 
     @Override
@@ -39,8 +42,8 @@ public class ShapeList implements ISubject {
     public void removeShape(IDraw drawShape) {
         shapeListArray.remove(drawShape);
         notifyObserver();
-
     }
+
     public ArrayList<IDraw> getShapeList() {
         return shapeListArray;
     }
@@ -60,9 +63,20 @@ public class ShapeList implements ISubject {
     public ArrayList<IDraw> getCopy() {
         return copyList;
     }
+    public void copyRemove() {
+        copyList.clear();
+    }
 
     public void getCopiedShapeList (IDraw shape) {
         copyList.add(shape);
+    }
+
+    public ArrayList<IDraw> getGroupList() {
+        return groupList;
+    }
+
+    public void addGroupList(IDraw shape) {
+        groupList.add(shape);
     }
 
 

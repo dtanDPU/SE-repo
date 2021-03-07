@@ -13,8 +13,8 @@ public class SelectShapeCmd implements ICommand {
     ShapeList shapeList;
     ISubject selectedShapeList;
     IDraw selectedShape;
-    Boolean ifShapeSelected = false;
     Points newStart;
+    int width, height;
 
 
 
@@ -24,43 +24,50 @@ public class SelectShapeCmd implements ICommand {
         this.applicationState = applicationState;
         this.selectedShapeList = selectList;
         this.newStart = shapeProps.getNewStartPoint();
-//        this.start = start;
-//        this.end = end;
+        this.width = shapeProps.getNewEndPoint().getX() - shapeProps.getNewStartPoint().getX();
+        this.height = shapeProps.getNewEndPoint().getY() - shapeProps.getNewStartPoint().getY();
 
 
     }
 
+
     @Override
     public void run() {
-        selectedShapeList.clearSelectedList();
-
         for(IDraw shapes : selectedShapeList.getShapeList()) {
             System.out.println("select test");
 
-            if(shapeCollision((shapeProps.getNewEndPoint()))) {
-                ifShapeSelected = true;
+            if(shapes.shapeCollision((shapeProps.getEndPoint()))) {
+                shapeProps.selected();
                 selectedShape = shapes;
+
                 selectedShapeList.addSelectedList(selectedShape);
+
 
                 System.out.println("Selected shape test: " + selectedShapeList.getSelectedShapeList());
             }
             else {
-                ifShapeSelected = false;
+                shapeProps.notSelected();
+                selectedShapeList.clearSelectedList();
             }
         }
-//        if(!ifShapeSelected) {
-//            selectedShapeList.clearSelectedList();
-//        }
-
     }
 
     //shape collision from link and discussion board
     // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
-    public boolean shapeCollision(Points points) {
-        return (points.getX() + shapeProps.getWidth() > newStart.getX() &&
-                points.getY() + shapeProps.getHeight() > newStart.getY() &&
-                points.getX() > newStart.getX() + shapeProps.getWidth() &&
-                points.getY() > newStart.getY() + shapeProps.getHeight());
-    }
+//    public boolean shapeCollision(Points points) {
+//        return (points.getX() + shapeProps.getWidth() > newStart.getX() &&
+//                points.getY() + shapeProps.getHeight() > newStart.getY() &&
+//                points.getX() > newStart.getX() + shapeProps.getWidth() &&
+//                points.getY() > newStart.getY() + shapeProps.getHeight());
+//    }
+
+//    public boolean shapeCollision(Points points) {
+//        return (points.getX() + shapeProps.getNewEndPoint().getX() - shapeProps.getNewStartPoint().getX() > newStart.getX() &&
+//                points.getY() + shapeProps.getNewEndPoint().getY() - shapeProps.getNewStartPoint().getY() > newStart.getY() &&
+//                points.getX() > newStart.getX() + shapeProps.getNewEndPoint().getX() - shapeProps.getNewStartPoint().getX() &&
+//                points.getY() > newStart.getY() + shapeProps.getNewEndPoint().getY() - shapeProps.getNewStartPoint().getY());
+//    }
+
+
 }
 

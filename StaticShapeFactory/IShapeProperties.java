@@ -22,8 +22,6 @@ public interface IShapeProperties {
     Points getStartPoint();
     Points getEndPoint();
     PaintCanvasBase getPaintCanvasBase();
-//    IApplicationState getAppState();
-
     void setPrimary(ShapeColor secondary);
     void setSecondary(ShapeColor secondary);
     void setShadeType(ShapeShadingType shadeType);
@@ -37,6 +35,9 @@ public interface IShapeProperties {
     void draw(Graphics2D graphics2D);
     Points getNewStartPoint();
     Points getNewEndPoint();
+    void selected();
+    void notSelected();
+    boolean ifSelected();
 
 
 }

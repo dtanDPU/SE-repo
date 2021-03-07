@@ -4,12 +4,11 @@ import StaticShapeFactory.ShapeProperties;
 import model.interfaces.IDraw;
 import view.interfaces.ISubject;
 
-public class DeleteCmd implements ICommand, IUndoable{
+public class GroupShapeCmd implements ICommand, IUndoable{
     ISubject selectShapeList;
     ShapeProperties shapeProperties;
 
-    public DeleteCmd(ISubject selectShapeList, ShapeProperties shapeProperties) {
-
+    public GroupShapeCmd(ISubject selectShapeList, ShapeProperties shapeProperties) {
         this.selectShapeList = selectShapeList;
         this.shapeProperties = shapeProperties;
 
@@ -18,27 +17,28 @@ public class DeleteCmd implements ICommand, IUndoable{
     @Override
     public void run() {
 
-        for(IDraw s : selectShapeList.getSelectedShapeList()) {
-            selectShapeList.removeShape(s);
-            selectShapeList.notifyObserver();
-
+        for(IDraw s : selectShapeList.getSelectedShapeList()){
+            selectShapeList.addGroupList(s);
         }
         CommandHistory.add(this);
+        System.out.println("test grouped: " + selectShapeList.getGroupList().size());
+
 
     }
 
     @Override
     public void undo() {
-        //same as all other undos just reverse the process
+
         for(IDraw s : selectShapeList.getSelectedShapeList()) {
-            selectShapeList.addShape(s);
+            selectShapeList.removeShape(s);
         }
+//        System.out.println("test undo group: " + selectShapeList.getGroupList().size());
+
 
     }
 
     @Override
     public void redo() {
-        // re-run the run() function to redo what we undid
         run();
 
     }

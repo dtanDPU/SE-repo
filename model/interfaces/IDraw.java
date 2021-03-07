@@ -9,10 +9,13 @@ import view.interfaces.PaintCanvasBase;
 import java.awt.*;
 
 public interface IDraw {
-    void draw(Graphics graphics);
-//    boolean shapeCollision(Points points);
+    void draw(Graphics2D graphics);
     void addDX(int dx);
     void addDY(int dy);
+    boolean shapeCollision(Points points);
+    ShapeProperties getShapeProps();
+
+
 
 
 }

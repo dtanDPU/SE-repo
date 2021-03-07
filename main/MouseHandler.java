@@ -46,9 +46,13 @@ public class MouseHandler extends MouseAdapter {
         endPoint = new Points(e.getX(), e.getY());
         shapeProps.setEndPoint(endPoint);
 //        System.out.println("End: " + "(" + endPoint.getX() + "," + endPoint.getY() + ")");
+
         // calculates width/height of the rectangle
-        x = Math.min(startPoint.getX(), endPoint.getX());
-        y = Math.min(startPoint.getY(), endPoint.getY());
+
+        x = shapeProps.getNewEndPoint().getX() - shapeProps.getNewStartPoint().getX();
+        y = shapeProps.getNewEndPoint().getY() - shapeProps.getNewStartPoint().getY();
+//        x = Math.min(startPoint.getX(), endPoint.getX());
+//        y = Math.min(startPoint.getY(), endPoint.getY());
 
         shapeProps.setWidth(x);
         shapeProps.setHeight(y);
@@ -57,7 +61,7 @@ public class MouseHandler extends MouseAdapter {
 
         switch (applicationState.getActiveMouseMode()) {
             case DRAW -> {
-                cmd = new CreateShapeCmd(shapeProps, applicationState, shapeList);
+                cmd = new CreateShapeCmd(shapeProps, shapeList);
                 cmd.run();
             }
             case SELECT -> {
@@ -66,7 +70,7 @@ public class MouseHandler extends MouseAdapter {
                 cmd.run();
             }
             case MOVE -> {
-                cmd = new MoveShapeCmd(shapeProps, applicationState, shapeList);
+                cmd = new MoveShapeCmd(shapeProps, shapeList);
                 cmd.run();
             }
         }

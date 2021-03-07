@@ -6,7 +6,6 @@ import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
 import model.MouseMode;
-import model.persistence.StartEndPoints;
 
 public interface IApplicationState {
     void setActiveShape();

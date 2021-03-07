@@ -23,13 +23,7 @@ public class ApplicationState implements IApplicationState {
     private ShapeShadingType activeShapeShadingType;
     private MouseMode activeMouseMode;
     int height, width;
-    Points startPoint, endPoint;
-    IApplicationState applicationState;
-    ShapeType shapeType;
-    ShapeColor primary, secondary;
-    ShapeShadingType shadeType;
-    Points newStartPoint, newEndPoint;
-
+    Points startPoint, endPoint, newStartPoint, newEndPoint;
 
     public ApplicationState(IUiModule uiModule) {
         this.uiModule = uiModule;
@@ -140,7 +134,15 @@ public class ApplicationState implements IApplicationState {
         return shapeProperties;
     }
 
-
+//    @Override
+//    public Points getNewEndPoint() {
+//        return null;
+//    }
+//
+//    @Override
+//    public Points getNewStartPoint() {
+//        return null;
+//    }
 
 
 }

@@ -10,14 +10,14 @@ import java.awt.*;
 
 public class Ellipse implements IDraw {
     Color primary, secondary;
-    IShapeProperties shapeProperties;
+    ShapeProperties shapeProperties;
     ShapeShadingType shadingType;
     Points startPoint, endPoint, newStart, newEnd;
     int width, height;
 
     private static ColorMap colorMap = new ColorMap();
 
-    public Ellipse(IShapeProperties shapeProperties) {
+    public Ellipse(ShapeProperties shapeProperties) {
         this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
         this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
         this.shapeProperties = shapeProperties;
@@ -30,26 +30,24 @@ public class Ellipse implements IDraw {
         this.newStart = shapeProperties.getNewStartPoint();
     }
 
+    public void draw(Graphics2D graphics) {
 
-
-    public void draw(Graphics graphics) {
-
-        Graphics2D graphics2D = (Graphics2D) graphics;
+//        Graphics2D graphics2D = (Graphics2D) graphics;
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
-                graphics2D.setColor(primary);
-                graphics2D.fillOval(newStart.getX(), newStart.getY(), width, height);
+                graphics.setColor(primary);
+                graphics.fillOval(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE" -> {
-                graphics2D.setColor(primary);
-                graphics2D.drawOval(newStart.getX(), newStart.getY(), width, height);
+                graphics.setColor(primary);
+                graphics.drawOval(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
-                graphics2D.setColor(secondary);
-                graphics2D.drawOval(newStart.getX(), newStart.getY(), width, height);
-                graphics2D.setColor(primary);
-                graphics2D.fillOval(newStart.getX(), newStart.getY(), width, height);
+                graphics.setColor(secondary);
+                graphics.drawOval(newStart.getX(), newStart.getY(), width, height);
+                graphics.setColor(primary);
+                graphics.fillOval(newStart.getX(), newStart.getY(), width, height);
             }
         }
     }
@@ -63,8 +61,20 @@ public class Ellipse implements IDraw {
     @Override
     public void addDY(int dy) {
         newStart.setY(newStart.getY() + dy);
-        newStart.setY(newStart.getY() + dy);
+        newEnd.setY(newStart.getY() + dy);
 
+    }
+
+    @Override
+    public boolean shapeCollision(Points points) {
+        return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
+                points.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY() > newStart.getY() &&
+                points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
+                points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
+    }
+
+    public ShapeProperties getShapeProps() {
+        return shapeProperties;
     }
 
 }

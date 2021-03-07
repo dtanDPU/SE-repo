@@ -8,35 +8,36 @@ import model.interfaces.IDraw;
 
 public class CreateShapeCmd implements ICommand, IUndoable{
     public ShapeProperties shapeProps;
-    public IApplicationState applicationState;
     ShapeList shapeList;
-    IDraw iDrawShape;
+    IDraw shape;
+    ShapeFactory shapeFactory;
 
 
-    public CreateShapeCmd(ShapeProperties shapeProps, IApplicationState applicationState, ShapeList shapeList) {
+    public CreateShapeCmd(ShapeProperties shapeProps, ShapeList shapeList) {
         this.shapeProps = shapeProps;
-        this.applicationState = applicationState;
         this.shapeList = shapeList;
+        this.shapeFactory = new ShapeFactory();
+//        this.applicationState = applicationState;
 
     }
 
     @Override
     public void run() {
-//        System.out.println("creating");
-        ShapeFactory shapeFactory = new ShapeFactory();
-        iDrawShape = shapeFactory.makeShape(shapeProps);
-        shapeList.addShape(iDrawShape);
+//        ShapeFactory shapeFactory = new ShapeFactory();
+//        shapeProps = applicationState.getShapeProps();
+        shape = shapeFactory.makeShape(shapeProps);
+        shapeList.addShape(shape);
         CommandHistory.add(this);
     }
 
     @Override
     public void undo() {
-        shapeList.removeShape(iDrawShape);
+        shapeList.removeShape(shape);
 
     }
 
     @Override
     public void redo() {
-        shapeList.addShape(iDrawShape);
+        shapeList.addShape(shape);
     }
 }
