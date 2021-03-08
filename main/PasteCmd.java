@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class PasteCmd implements ICommand, IUndoable{
     ISubject copiedList;
     ShapeProperties shapeProperties;
-    IDraw newS, tempS;
+    IDraw tempS;
     ShapeList shapeList;
 
 

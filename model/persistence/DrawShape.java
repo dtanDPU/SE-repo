@@ -25,9 +25,16 @@ public class DrawShape implements IObserver {
         Graphics2D g = paintCanvas.getGraphics2D();
         g.setColor(colorMap.getTheColor(ShapeColor.WHITE));
         g.fillRect(0,0,paintCanvas.getWidth(),paintCanvas.getHeight());
+
         for(IDraw shape : shapeList.getShapeList()){
             shape.draw(g);
+            if(shapeList.getSelectedShapeList().contains(shape)){
+                shape.outline(g);
+            }
+
+
 
         }
+
     }
 }

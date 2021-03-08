@@ -20,6 +20,7 @@ public class Triangle implements IDraw {
     int[] Y = new int [3];
 
 
+
     public Triangle(ShapeProperties shapeProperties) {
         this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
         this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
@@ -59,13 +60,10 @@ public class Triangle implements IDraw {
             }
 
         }
-        if (shapeProperties.ifSelected()) {
-            graphics.setStroke(new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
-                    1, new float[]{9}, 0));
-            graphics.setColor(Color.BLACK);
-            graphics.drawPolygon(X,Y,3);
-        }
+
     }
+
+
 
     @Override
     public void addDX(int dx) {
@@ -84,6 +82,8 @@ public class Triangle implements IDraw {
 
     }
 
+    //shape collision from link and discussion board
+    // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
     @Override
     public boolean shapeCollision(Points points) {
         return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
@@ -95,4 +95,29 @@ public class Triangle implements IDraw {
         return shapeProperties;
     }
 
-}
+    @Override
+    public void outline(Graphics graphics) {
+
+        X = new int[]{startPoint.getX(), endPoint.getX(), startPoint.getX()};
+        Y = new int[]{startPoint.getY(), endPoint.getY(), endPoint.getY()};
+
+        Graphics2D graphics2D = (Graphics2D) graphics;
+
+        if(shadingType.equals(ShapeShadingType.OUTLINE) || shadingType.equals(ShapeShadingType.OUTLINE_AND_FILLED_IN)){
+            Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
+                    1, new float[]{9}, 0);
+            graphics2D.setStroke(stroke);
+            graphics2D.setColor(Color.BLACK);
+            graphics2D.drawPolygon(X,Y,3);
+        }
+        else {
+            Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
+                    1, new float[]{9}, 0);
+            graphics2D.setStroke(stroke);
+            graphics2D.setColor(Color.BLACK);
+            graphics2D.drawPolygon(X,Y,3);
+        }
+    }
+    }
+
+

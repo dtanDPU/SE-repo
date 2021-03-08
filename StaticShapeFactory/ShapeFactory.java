@@ -24,7 +24,6 @@ public class ShapeFactory {
                 iDraw = new Triangle(shapeProperties);
 //                System.out.println("reaches triangle");
             }
-            default -> System.out.println("Null Shape");
         }
 
         return iDraw;

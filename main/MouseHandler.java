@@ -66,7 +66,7 @@ public class MouseHandler extends MouseAdapter {
             }
             case SELECT -> {
                 shapeProps.getNewEndPoint();
-                cmd = new SelectShapeCmd(shapeProps, applicationState, shapeList);
+                cmd = new SelectShapeCmd(shapeProps, shapeList, canvasBase);
                 cmd.run();
             }
             case MOVE -> {

@@ -14,7 +14,6 @@ public class Ellipse implements IDraw {
     ShapeShadingType shadingType;
     Points startPoint, endPoint, newStart, newEnd;
     int width, height;
-
     private static ColorMap colorMap = new ColorMap();
 
     public Ellipse(ShapeProperties shapeProperties) {
@@ -37,20 +36,25 @@ public class Ellipse implements IDraw {
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
                 graphics.setColor(primary);
+                graphics.setStroke(new BasicStroke(5));
                 graphics.fillOval(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE" -> {
                 graphics.setColor(primary);
+                graphics.setStroke(new BasicStroke(5));
                 graphics.drawOval(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
                 graphics.setColor(secondary);
+                graphics.setStroke(new BasicStroke(5));
                 graphics.drawOval(newStart.getX(), newStart.getY(), width, height);
                 graphics.setColor(primary);
                 graphics.fillOval(newStart.getX(), newStart.getY(), width, height);
             }
         }
     }
+
+
 
     @Override
     public void addDX(int dx) {
@@ -65,6 +69,8 @@ public class Ellipse implements IDraw {
 
     }
 
+    //shape collision from link and discussion board
+    // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
     @Override
     public boolean shapeCollision(Points points) {
         return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
@@ -77,4 +83,25 @@ public class Ellipse implements IDraw {
         return shapeProperties;
     }
 
+    @Override
+    public void outline(Graphics graphics) {
+        Graphics2D graphics2D = (Graphics2D) graphics;
+
+        if(shadingType.equals(ShapeShadingType.OUTLINE) || shadingType.equals(ShapeShadingType.OUTLINE_AND_FILLED_IN)){
+            Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
+                    1, new float[]{9}, 0);
+            graphics2D.setStroke(stroke);
+            graphics2D.setColor(Color.BLACK);
+            graphics2D.drawOval(newStart.getX()-10, newStart.getY()-10, width+20, height+20);
+        }
+        else {
+            Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
+                    1, new float[]{9}, 0);
+            graphics2D.setStroke(stroke);
+            graphics2D.setColor(Color.BLACK);
+            graphics2D.drawOval(newStart.getX()-5, newStart.getY()-5, width+10, height+10);
+        }
+    }
 }
+
+

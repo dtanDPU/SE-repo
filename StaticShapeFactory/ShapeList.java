@@ -79,6 +79,14 @@ public class ShapeList implements ISubject {
         groupList.add(shape);
     }
 
+    public int getGroupListSize() {
+        return groupList.size();
+    }
+
+    public void removeGroupedShapes(IDraw shape) {
+        groupList.remove(shape);
+    }
+
 
 }
 

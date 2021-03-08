@@ -11,6 +11,7 @@ public interface ISubject {
 
     void register(IObserver observer);
     void notifyObserver();
+
     ArrayList<IDraw> getSelectedShapeList();
     ArrayList<IDraw> getShapeList();
     void addSelectedList(IDraw drawShape);
@@ -23,6 +24,8 @@ public interface ISubject {
 
     ArrayList<IDraw> getGroupList();
     void addGroupList(IDraw shape);
+    int getGroupListSize();
+    void removeGroupedShapes(IDraw shape);
 
 
 

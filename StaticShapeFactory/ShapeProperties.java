@@ -16,7 +16,7 @@ public class ShapeProperties implements IShapeProperties{
     private Points startPoint, endPoint;
     private int width, height;
     PaintCanvasBase paintCanvasBase;
-    boolean ifSelected;
+    boolean ifSelected = false;
 
 
     public Points getStartPoint() {

@@ -20,8 +20,6 @@ public class DeleteCmd implements ICommand, IUndoable{
 
         for(IDraw s : selectShapeList.getSelectedShapeList()) {
             selectShapeList.removeShape(s);
-            selectShapeList.notifyObserver();
-
         }
         CommandHistory.add(this);
 
