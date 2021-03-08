@@ -104,13 +104,13 @@ public class ApplicationState implements IApplicationState {
 //        newEndPoint = new Points(endX, endY);
 //        return newEndPoint;
 //    }
-//    public Points getStartPoint() {
-//        return startPoint;
-//    }
-//
-//    public Points getEndPoint() {
-//        return endPoint;
-//    }
+    public Points getStartPoint() {
+        return startPoint;
+    }
+
+    public Points getEndPoint() {
+        return endPoint;
+    }
 
 //    public void setNewStartPoint(Points newStartPoint){
 //        this.newStartPoint = newStartPoint;
@@ -127,10 +127,10 @@ public class ApplicationState implements IApplicationState {
         shapeProperties.setShadeType(activeShapeShadingType);
         shapeProperties.setHeight(height);
         shapeProperties.setWidth(width);
-        shapeProperties.setStartPoint(startPoint);
-        shapeProperties.setEndPoint(endPoint);
-        shapeProperties.setNewEndPoint();
-        shapeProperties.setNewStartPoint();
+//        shapeProperties.setStartPoint(startPoint);
+//        shapeProperties.setEndPoint(endPoint);
+//        shapeProperties.setNewEndPoint();
+//        shapeProperties.setNewStartPoint();
         return shapeProperties;
     }
 

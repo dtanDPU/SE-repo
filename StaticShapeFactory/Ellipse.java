@@ -54,7 +54,13 @@ public class Ellipse implements IDraw {
         }
     }
 
-
+//    @Override
+//    public void move(int dx, int dy) {
+//        Points newStart = new Points(startPoint.getX() +dx, startPoint.getY()+dy);
+//        Points newEnd = new Points(endPoint.getX()+dx, endPoint.getY()+dy);
+//        startPoint = newStart;
+//        endPoint = newEnd;
+//    }
 
     @Override
     public void addDX(int dx) {

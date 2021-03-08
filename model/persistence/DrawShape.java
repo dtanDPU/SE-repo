@@ -30,6 +30,7 @@ public class DrawShape implements IObserver {
             shape.draw(g);
             if(shapeList.getSelectedShapeList().contains(shape)){
                 shape.outline(g);
+
             }
 
 

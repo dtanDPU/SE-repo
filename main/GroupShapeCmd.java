@@ -1,25 +1,25 @@
 package main;
 
+import StaticShapeFactory.ShapeList;
 import StaticShapeFactory.ShapeProperties;
 import model.interfaces.IDraw;
 import view.interfaces.ISubject;
 
+import java.util.ArrayList;
+
 public class GroupShapeCmd implements ICommand, IUndoable{
-    ISubject selectShapeList;
+    ISubject selectShapeList, groupList, shapeList;
     ShapeProperties shapeProperties;
 
     public GroupShapeCmd(ISubject selectShapeList, ShapeProperties shapeProperties) {
         this.selectShapeList = selectShapeList;
         this.shapeProperties = shapeProperties;
 
+
     }
 
     @Override
     public void run() {
-
-        if(selectShapeList.getShapeList().size() <1) {
-            return;
-        }
 
         for(IDraw s : selectShapeList.getShapeList()){
             selectShapeList.addGroupList(s);

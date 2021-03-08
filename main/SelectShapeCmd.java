@@ -73,6 +73,7 @@ public class SelectShapeCmd implements ICommand {
                 graphics2D.drawOval(shapes.getShapeProps().getStartX()-10, shapes.getShapeProps().getStartY()-10,
                         shapes.getShapeProps().getWidth()+20, shapes.getShapeProps().getHeight()+20);
             } else if (shapes.getShapeProps().getShapeType().equals(ShapeType.TRIANGLE)) {
+
                 int[] X;
                 int[] Y;
 

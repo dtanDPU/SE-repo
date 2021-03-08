@@ -39,18 +39,6 @@ public class ShapeProperties implements IShapeProperties{
         return endPoint.getY();
     }
 
-//    public int getHeight() {
-//        newStartPoint = getNewStartPoint();
-//        newEndPoint = getNewEndPoint();
-//        return newEndPoint.getY() - newStartPoint.getY();
-//    }
-//    public int getWidth() {
-//        newStartPoint = getNewStartPoint();
-//        newEndPoint = getNewEndPoint();
-//        return newEndPoint.getX() - newStartPoint.getX();
-//    }
-//
-
     public int getHeight() {
         return height;
     }
@@ -137,6 +125,8 @@ public class ShapeProperties implements IShapeProperties{
     public boolean ifSelected() {
         return this.ifSelected;
     }
+
+
 
 
 }

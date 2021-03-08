@@ -18,7 +18,7 @@ import java.awt.event.MouseEvent;
 public class MouseHandler extends MouseAdapter {
     PaintCanvasBase canvasBase;
     Points startPoint, endPoint;
-    ShapeList shapeList;
+    ShapeList shapeList, selectedShapeList;
     ShapeProperties shapeProps;
     int x, y;
     public IApplicationState applicationState;
@@ -70,7 +70,7 @@ public class MouseHandler extends MouseAdapter {
                 cmd.run();
             }
             case MOVE -> {
-                cmd = new MoveShapeCmd(shapeProps, shapeList);
+                cmd = new MoveShapeCmd(shapeProps, selectedShapeList, shapeList );
                 cmd.run();
             }
         }

@@ -34,6 +34,6 @@ public interface IApplicationState {
 
     MouseMode getActiveMouseMode();
 
-//    Points getStartPoint();
-//    Points getEndPoint();
+    Points getStartPoint();
+    Points getEndPoint();
 }

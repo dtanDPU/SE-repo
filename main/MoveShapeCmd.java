@@ -11,37 +11,44 @@ import java.util.ArrayList;
 public class MoveShapeCmd implements ICommand, IUndoable{
 
     public ShapeProperties shapeProps;
-    IDraw OGshape;
-    IDraw newS;
     ArrayList<IDraw> moveShapeList;
     ISubject selectShapeList;
     int X, Y;
+    ShapeList OGlist;
 
-    public MoveShapeCmd(ShapeProperties shapeProps, ISubject selectShapeList) {
 
+    public MoveShapeCmd(ShapeProperties shapeProps, ISubject selectShapeList, ShapeList shapeList) {
         this.shapeProps = shapeProps;
         this.selectShapeList = selectShapeList;
         this.moveShapeList = new ArrayList<>();
         this.X = shapeProps.getEndPoint().getX() - shapeProps.getStartPoint().getX();
         this.Y = shapeProps.getEndPoint().getY() - shapeProps.getStartPoint().getY();
+        this.OGlist = shapeList;
+
 
     }
 
     @Override
     public void run() {
+        //refactored to make the shapes not move randomly now.
+        // used 2 loops/temp array before now only 1 loop and no temp array
+        for(IDraw selectedShapes : OGlist.getSelectedShapeList()){
+            OGlist.removeShape(selectedShapes);
+            selectedShapes.addDX(X);
+            selectedShapes.addDY(Y);
+            OGlist.addShape(selectedShapes);
+//            OGshape = shape;
+//            moveShapeList.add(OGshape);
+//            selectShapeList.removeShape(OGshape);
 
-        for(IDraw shape : selectShapeList.getSelectedShapeList()){
-            OGshape = shape;
-            moveShapeList.add(OGshape);
-            selectShapeList.removeShape(OGshape);
-
-            for(IDraw shapeStore : moveShapeList){
-                shapeStore.addDX(X);
-                shapeStore.addDY(Y);
-                newS = shapeStore;
-                selectShapeList.addShape(newS);
-            }
+//            for(IDraw shapeStore : moveShapeList){
+//                shapeStore.addDX(X);
+//                shapeStore.addDY(Y);
+//                newS = shapeStore;
+//                selectShapeList.addShape(newS);
+//            }
         }
+//        selectShapeList.notifyObserver();
         CommandHistory.add(this);
     }
 
@@ -49,18 +56,31 @@ public class MoveShapeCmd implements ICommand, IUndoable{
     public void undo() {
 
     //  inverse of moving from above code
-        for(IDraw shapeStore : selectShapeList.getSelectedShapeList()) {
-            shapeStore.addDX(-X);
-            shapeStore.addDY(-Y);
-            newS = shapeStore;
-            selectShapeList.addShape(newS);
+        for(IDraw selectedShapes : OGlist.getSelectedShapeList()) {
+            selectedShapes.addDX(-X);
+            selectedShapes.addDY(-Y);
+            OGlist.addShape(selectedShapes);
         }
+//        selectShapeList.notifyObserver();
     }
 
     @Override
     public void redo() {
-//        selectShapeList.addShape(newS);
-        run();
+        //doing run() seems to make it worse than doing this way
 
-    }
+        for(IDraw selectedShapes : OGlist.getSelectedShapeList()){
+            selectedShapes.addDX(X);
+            selectedShapes.addDY(Y);
+            OGlist.addShape(selectedShapes);
+        }
+//        for (IDraw shapeStore : shapeList.getSelectedShapeList()) {
+//            shapeStore.addDX(X);
+//            shapeStore.addDY(Y);
+//            newS = shapeStore;
+//            selectShapeList.addShape(newS);
+        }
+//        selectShapeList.notifyObserver();
+
+
+
 }

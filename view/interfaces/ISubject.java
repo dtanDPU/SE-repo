@@ -21,7 +21,6 @@ public interface ISubject {
     ArrayList<IDraw> getCopy();
     void getCopiedShapeList (IDraw shape);
     void copyRemove();
-
     ArrayList<IDraw> getGroupList();
     void addGroupList(IDraw shape);
     int getGroupListSize();

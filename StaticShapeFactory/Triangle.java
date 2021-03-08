@@ -32,16 +32,24 @@ public class Triangle implements IDraw {
         this.endPoint = shapeProperties.getEndPoint();
         this.newEnd = shapeProperties.getNewEndPoint();
         this.newStart = shapeProperties.getNewStartPoint();
-
+//        Points newP = new Points(shapeProperties.getNewStartPoint().x, shapeProperties.getNewEndPoint().y);
+//
+//
+//        X[0] = shapeProperties.getStartPoint().getX();
+//        X[1] = shapeProperties.getEndPoint().getX();
+//        X[2] = newP.getX();
+//
+//        Y[0] = shapeProperties.getStartPoint().getY();
+//        Y[1] = shapeProperties.getEndPoint().getY();
+//        Y[2] = newP.getY();
 
     }
 
     public void draw(Graphics2D graphics) {
 
+
         X = new int[]{startPoint.getX(), endPoint.getX(), startPoint.getX()};
         Y = new int[]{startPoint.getY(), endPoint.getY(), endPoint.getY()};
-
-//        Graphics2D graphics2D = (Graphics2D) graphics;
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
@@ -63,15 +71,20 @@ public class Triangle implements IDraw {
 
     }
 
-
+//    @Override
+//    public void move(int dx, int dy) {
+//        Points newStart = new Points(startPoint.getX() +dx, startPoint.getY()+dy);
+//        Points newEnd = new Points(endPoint.getX()+dx, endPoint.getY()+dy);
+//        startPoint = newStart;
+//        endPoint = newEnd;
+//
+//    }
 
     @Override
     public void addDX(int dx) {
         X[0] = newStart.getX() + dx;
         X[1] = newEnd.getX() + dx;
         X[2] = newStart.getX() + dx;
-
-
     }
 
     @Override

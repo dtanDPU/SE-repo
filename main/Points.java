@@ -2,8 +2,8 @@ package main;
 
 
 public class Points {
-    int x;
-    int y;
+    public int x;
+    public int y;
 
 
     public Points(int x, int y) {
