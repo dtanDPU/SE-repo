@@ -20,11 +20,12 @@ public class GroupShapeCmd implements ICommand, IUndoable{
 
     @Override
     public void run() {
+        selectShapeList.getGroupList().clear();
 
-        for(IDraw s : selectShapeList.getShapeList()){
+        for(IDraw s : selectShapeList.getSelectedShapeList()){
             selectShapeList.addGroupList(s);
         }
-        CommandHistory.add(this);
+//        CommandHistory.add(this);
         System.out.println("test grouped: " + selectShapeList.getGroupList().size());
 
 
@@ -33,13 +34,15 @@ public class GroupShapeCmd implements ICommand, IUndoable{
     @Override
     public void undo() {
 
-        for(IDraw s : selectShapeList.getSelectedShapeList()) {
-            selectShapeList.removeShape(s);
+
+        for (IDraw s : selectShapeList.getSelectedShapeList()) {
+            selectShapeList.removeGroupedShapes(s);
         }
+//        CommandHistory.add(this);
         System.out.println("test undo group: " + selectShapeList.getGroupList().size());
 
-
     }
+
 
     @Override
     public void redo() {

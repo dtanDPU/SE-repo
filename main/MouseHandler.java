@@ -75,7 +75,6 @@ public class MouseHandler extends MouseAdapter {
             }
         }
 
-
         // original implementation to only draw shape
 //        CreateShapeCmd createShapes = new CreateShapeCmd(shapeProps, applicationState, shapeList);
 //        createShapes.run();

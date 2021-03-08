@@ -104,20 +104,8 @@ public class ApplicationState implements IApplicationState {
 //        newEndPoint = new Points(endX, endY);
 //        return newEndPoint;
 //    }
-    public Points getStartPoint() {
-        return startPoint;
-    }
 
-    public Points getEndPoint() {
-        return endPoint;
-    }
 
-//    public void setNewStartPoint(Points newStartPoint){
-//        this.newStartPoint = newStartPoint;
-//    }
-//    public void setNewEndPoint(Points newEndPoint){
-//        this.newEndPoint = newEndPoint;
-//    }
 
     public ShapeProperties getShapeProps() {
         ShapeProperties shapeProperties = new ShapeProperties();
@@ -134,15 +122,6 @@ public class ApplicationState implements IApplicationState {
         return shapeProperties;
     }
 
-//    @Override
-//    public Points getNewEndPoint() {
-//        return null;
-//    }
-//
-//    @Override
-//    public Points getNewStartPoint() {
-//        return null;
-//    }
 
 
 }

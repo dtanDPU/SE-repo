@@ -24,6 +24,10 @@ public class ShapeFactory {
                 iDraw = new Triangle(shapeProperties);
 //                System.out.println("reaches triangle");
             }
+            default -> {
+                iDraw = new NullObject();
+            }
+
         }
 
         return iDraw;

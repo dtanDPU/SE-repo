@@ -28,12 +28,6 @@ public interface IApplicationState {
     
     ShapeProperties getShapeProps();
 
-//    Points getNewEndPoint();
-//
-//    Points getNewStartPoint();
-
     MouseMode getActiveMouseMode();
 
-    Points getStartPoint();
-    Points getEndPoint();
 }
