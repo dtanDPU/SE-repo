@@ -1,6 +1,7 @@
 package StaticShapeFactory;
 
 import main.Points;
+import model.ShapeColor;
 import model.ShapeShadingType;
 import model.interfaces.IDraw;
 import model.persistence.ApplicationState;
@@ -9,19 +10,16 @@ import view.interfaces.PaintCanvasBase;
 import java.awt.*;
 
 public class Rectangle implements IDraw{
-    Color primary, secondary;
+    ShapeColor primary, secondary;
     ShapeProperties shapeProperties;
     ShapeShadingType shadingType;
     Points startPoint, endPoint, newStart,newEnd;
     int width, height;
 
-
-    private static final ColorMap colorMap = new ColorMap();
-
     public Rectangle(ShapeProperties shapeProperties) {
         this.shapeProperties = shapeProperties;
-        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
-        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
+//        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
+//        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
         this.shadingType = shapeProperties.getShadeType();
         this.startPoint = shapeProperties.getStartPoint();
         this.endPoint = shapeProperties.getEndPoint();
@@ -29,29 +27,29 @@ public class Rectangle implements IDraw{
         this.height = shapeProperties.getHeight();
         this.newStart = shapeProperties.getNewStartPoint();
         this.newEnd = shapeProperties.getNewEndPoint();
+        this.primary = shapeProperties.getPrimary();
+        this.secondary = shapeProperties.getSecondary();
     }
     // finally got this working by searching how the paintComponent works for all shapes
     // http://www.java2s.com/Code/JavaAPI/java.awt/BasicStrokeCAPBUTT.htm
     public void draw(Graphics2D graphics) {
 
-//        Graphics2D graphics2D = (Graphics2D) graphics;
-
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
-                graphics.setColor(primary);
+                graphics.setColor(ColorMap.getInstance().getColor(primary));
                 graphics.setStroke(new BasicStroke(5));
                 graphics.fillRect(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE" -> {
-                graphics.setColor(primary);
+                graphics.setColor(ColorMap.getInstance().getColor(primary));
                 graphics.setStroke(new BasicStroke(5));
                 graphics.drawRect(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
-                graphics.setColor(primary);
+                graphics.setColor(ColorMap.getInstance().getColor(primary));
                 graphics.setStroke(new BasicStroke(5));
                 graphics.fillRect(newStart.getX(), newStart.getY(), width, height);
-                graphics.setColor(secondary);
+                graphics.setColor(ColorMap.getInstance().getColor(secondary));
                 graphics.drawRect(newStart.getX(), newStart.getY(), width, height);
             }
         }
@@ -92,12 +90,14 @@ public class Rectangle implements IDraw{
 
     //shape collision from link and discussion board
     // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
+    @Override
     public boolean shapeCollision(Points points) {
         return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
                 points.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY() > newStart.getY() &&
                 points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
                 points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
     }
+
 
     public ShapeProperties getShapeProps() {
         return shapeProperties;

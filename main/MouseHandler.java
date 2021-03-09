@@ -3,10 +3,12 @@ package main;
 
 import StaticShapeFactory.ShapeList;
 import StaticShapeFactory.ShapeProperties;
+import model.ShapeColor;
 import model.interfaces.IApplicationState;
 import view.interfaces.PaintCanvasBase;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class MouseHandler extends MouseAdapter {
     PaintCanvasBase canvasBase;
@@ -16,6 +18,7 @@ public class MouseHandler extends MouseAdapter {
     int x, y;
     public IApplicationState applicationState;
     ICommand cmd;
+
 
 
     public MouseHandler(PaintCanvasBase canvasBase, ShapeList shapeList, IApplicationState applicationState) {
@@ -31,6 +34,8 @@ public class MouseHandler extends MouseAdapter {
         shapeProps = applicationState.getShapeProps();
         startPoint = new Points(e.getX(), e.getY());
         shapeProps.setStartPoint(startPoint);
+
+
 //        System.out.println("Start: " + "(" + startPoint.getX() + "," + startPoint.getY() + ")");
     }
 

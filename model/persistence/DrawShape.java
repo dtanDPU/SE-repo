@@ -2,6 +2,7 @@ package model.persistence;
 
 import StaticShapeFactory.ColorMap;
 import StaticShapeFactory.ShapeList;
+import StaticShapeFactory.ShapeProperties;
 import model.ShapeColor;
 import model.interfaces.IDraw;
 import model.interfaces.IObserver;
@@ -13,8 +14,8 @@ public class DrawShape implements IObserver {
 
     PaintCanvasBase paintCanvas;
     ShapeList shapeList;
-
-    private static ColorMap colorMap = new ColorMap();
+    ShapeProperties shapeProperties;
+//    private static ColorMap colorMap = new ColorMap();
 
     public DrawShape(PaintCanvasBase paintCanvas, ShapeList shapeList) {
         this.paintCanvas = paintCanvas;
@@ -22,8 +23,10 @@ public class DrawShape implements IObserver {
     }
 
     public void update(){
+
         Graphics2D g = paintCanvas.getGraphics2D();
-        g.setColor(colorMap.getTheColor(ShapeColor.WHITE));
+        g.setColor(ColorMap.getInstance().getColor(ShapeColor.WHITE));
+//        g.setColor(colorMap.getTheColor(ShapeColor.WHITE));
         g.fillRect(0,0,paintCanvas.getWidth(),paintCanvas.getHeight());
 
         for(IDraw shape : shapeList.getShapeList()){

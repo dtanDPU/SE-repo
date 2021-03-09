@@ -2,6 +2,7 @@ package StaticShapeFactory;
 
 import main.CreateShapeCmd;
 import main.Points;
+import model.ShapeColor;
 import model.ShapeShadingType;
 import model.interfaces.IDraw;
 import view.interfaces.PaintCanvasBase;
@@ -9,16 +10,16 @@ import view.interfaces.PaintCanvasBase;
 import java.awt.*;
 
 public class Ellipse implements IDraw {
-    Color primary, secondary;
+    ShapeColor primary, secondary;
     ShapeProperties shapeProperties;
     ShapeShadingType shadingType;
     Points startPoint, endPoint, newStart, newEnd;
     int width, height;
-    private static ColorMap colorMap = new ColorMap();
+//    private static ColorMap colorMap = new ColorMap();
 
     public Ellipse(ShapeProperties shapeProperties) {
-        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
-        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
+//        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
+//        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
         this.shapeProperties = shapeProperties;
         this.shadingType = shapeProperties.getShadeType();
         this.startPoint = shapeProperties.getStartPoint();
@@ -27,40 +28,33 @@ public class Ellipse implements IDraw {
         this.height = shapeProperties.getHeight();
         this.newEnd = shapeProperties.getNewEndPoint();
         this.newStart = shapeProperties.getNewStartPoint();
+        this.primary = shapeProperties.getPrimary();
+        this.secondary = shapeProperties.getSecondary();
     }
 
     public void draw(Graphics2D graphics) {
 
-//        Graphics2D graphics2D = (Graphics2D) graphics;
-
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
-                graphics.setColor(primary);
+                graphics.setColor(ColorMap.getInstance().getColor(primary));
                 graphics.setStroke(new BasicStroke(5));
                 graphics.fillOval(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE" -> {
-                graphics.setColor(primary);
+                graphics.setColor(ColorMap.getInstance().getColor(primary));
                 graphics.setStroke(new BasicStroke(5));
                 graphics.drawOval(newStart.getX(), newStart.getY(), width, height);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
-                graphics.setColor(secondary);
+                graphics.setColor(ColorMap.getInstance().getColor(secondary));
                 graphics.setStroke(new BasicStroke(5));
                 graphics.drawOval(newStart.getX(), newStart.getY(), width, height);
-                graphics.setColor(primary);
+                graphics.setColor(ColorMap.getInstance().getColor(primary));
                 graphics.fillOval(newStart.getX(), newStart.getY(), width, height);
             }
         }
     }
 
-//    @Override
-//    public void move(int dx, int dy) {
-//        Points newStart = new Points(startPoint.getX() +dx, startPoint.getY()+dy);
-//        Points newEnd = new Points(endPoint.getX()+dx, endPoint.getY()+dy);
-//        startPoint = newStart;
-//        endPoint = newEnd;
-//    }
 
     @Override
     public void addDX(int dx) {
@@ -84,6 +78,7 @@ public class Ellipse implements IDraw {
                 points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
                 points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
     }
+
 
     public ShapeProperties getShapeProps() {
         return shapeProperties;

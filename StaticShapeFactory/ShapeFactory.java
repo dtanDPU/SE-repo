@@ -2,14 +2,13 @@ package StaticShapeFactory;
 
 import model.ShapeType;
 import model.interfaces.IDraw;
-import view.interfaces.PaintCanvasBase;
-
 
 public class ShapeFactory {
 
     public IDraw makeShape(ShapeProperties shapeProperties) {
+
         ShapeType shapeType = shapeProperties.getShapeType();
-        IDraw iDraw = null;
+        IDraw iDraw;
 
         switch (shapeType.toString()) {
             case "RECTANGLE" -> {

@@ -6,9 +6,11 @@ import java.awt.*;
 import java.util.EnumMap;
 
 public class ColorMap {
-    public static EnumMap<ShapeColor, Color> map = new EnumMap<>(ShapeColor.class);
+    private static ColorMap instance = new ColorMap();
+    public EnumMap<ShapeColor, Color> map;
 
-    public ColorMap() {
+    private ColorMap() {
+        map = new EnumMap<>(ShapeColor.class);
         map.put(ShapeColor.BLUE, Color.BLUE);
         map.put(ShapeColor.BLACK, Color.BLACK);
         map.put(ShapeColor.CYAN, Color.CYAN);
@@ -25,11 +27,14 @@ public class ColorMap {
 
     }
 
-    //need a method to get the colors out
-
-    public Color getTheColor(ShapeColor colorMap) {
+    public Color getColor(ShapeColor colorMap) {
         return map.get(colorMap);
     }
+    public static ColorMap getInstance(){
+        return instance;
+    }
+
+
 
 
 }

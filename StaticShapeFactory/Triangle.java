@@ -2,6 +2,7 @@ package StaticShapeFactory;
 
 import main.CreateShapeCmd;
 import main.Points;
+import model.ShapeColor;
 import model.ShapeShadingType;
 import model.interfaces.IDraw;
 import view.interfaces.PaintCanvasBase;
@@ -10,19 +11,19 @@ import java.awt.*;
 
 public class Triangle implements IDraw {
 
-    Color primary, secondary;
+    ShapeColor primary, secondary;
     ShapeProperties shapeProperties;
     ShapeShadingType shadingType;
     int width, height;
     Points startPoint, endPoint, newStart, newEnd  ;
-    private static ColorMap colorMap = new ColorMap();
+//    private static ColorMap colorMap = new ColorMap();
     int[] X ;
     int[] Y ;
 
 
     public Triangle(ShapeProperties shapeProperties) {
-        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
-        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
+//        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
+//        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
         this.shapeProperties = shapeProperties;
         this.shadingType = shapeProperties.getShadeType();
         this.width = shapeProperties.getWidth();
@@ -31,32 +32,35 @@ public class Triangle implements IDraw {
         this.endPoint = shapeProperties.getEndPoint();
         this.newEnd = shapeProperties.getNewEndPoint();
         this.newStart = shapeProperties.getNewStartPoint();
+        this.primary = shapeProperties.getPrimary();
+        this.secondary = shapeProperties.getSecondary();
 
     }
 
     public void draw(Graphics2D graphics) {
-
 
         X = new int[]{startPoint.getX(), endPoint.getX(), startPoint.getX()};
         Y = new int[]{startPoint.getY(), endPoint.getY(), endPoint.getY()};
 
         switch (shadingType.toString()) {
             case "FILLED_IN" -> {
-                graphics.setColor(primary);
+                graphics.setColor(ColorMap.getInstance().getColor(primary));
                 graphics.fillPolygon(X,Y, 3);
             }
             case "OUTLINE" -> {
-                graphics.setColor(primary);
+                graphics.setColor(ColorMap.getInstance().getColor(primary));
                 graphics.drawPolygon(X,Y,3);
             }
             case "OUTLINE_AND_FILLED_IN" -> {
-                graphics.setColor(secondary);
+                graphics.setColor(ColorMap.getInstance().getColor(secondary));
                 graphics.drawPolygon(X,Y,3);
-                graphics.setColor(primary);
+                graphics.setColor(ColorMap.getInstance().getColor(primary));
                 graphics.fillPolygon(X,Y,3);
             }
         }
     }
+
+    // had to do this differently from rectangle/ellipse need to use
     @Override
     public void addDX(int dx) {
         X = new int[]{startPoint.getX() + dx, endPoint.getX() + dx, startPoint.getX() + dx};
@@ -71,19 +75,6 @@ public class Triangle implements IDraw {
         endPoint.setY(endPoint.getY() + dy);
     }
 
-//    @Override
-//    public void addDX(int dx) {
-//        X[0] = newStart.getX() + dx;
-//        X[1] = newEnd.getX() + dx;
-//        X[2] = newStart.getX() + dx;
-//    }
-//
-//    @Override
-//    public void addDY(int dy) {
-//        Y[0] = newStart.getY() + dy;
-//        Y[1] = newEnd.getY() + dy;
-//        Y[2] = newEnd.getY() + dy;
-//    }
 
     //shape collision from link and discussion board
     // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
@@ -94,6 +85,9 @@ public class Triangle implements IDraw {
                 points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
                 points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
     }
+
+
+
     public ShapeProperties getShapeProps() {
         return shapeProperties;
     }
@@ -101,8 +95,8 @@ public class Triangle implements IDraw {
     @Override
     public void outline(Graphics graphics) {
 
-        X = new int[]{startPoint.getX(), endPoint.getX(), startPoint.getX()};
-        Y = new int[]{startPoint.getY(), endPoint.getY(), endPoint.getY()};
+        X = new int[]{startPoint.getX() - 5, endPoint.getX() + 20, startPoint.getX() - 9};
+        Y = new int[]{startPoint.getY() - 9, endPoint.getY() + 5, endPoint.getY() + 9};
 
         Graphics2D graphics2D = (Graphics2D) graphics;
 
