@@ -48,6 +48,10 @@ public class ShapeList implements ISubject {
         return shapeListArray;
     }
 
+    public void clearShapeList() {
+         shapeListArray.clear();
+    }
+
     public ArrayList<IDraw> getSelectedShapeList() {
         return selectedListArray;
     }

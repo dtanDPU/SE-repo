@@ -14,6 +14,7 @@ public interface ISubject {
 
     ArrayList<IDraw> getSelectedShapeList();
     ArrayList<IDraw> getShapeList();
+    void clearShapeList();
     void addSelectedList(IDraw drawShape);
     void clearSelectedList();
     void removeShape(IDraw drawShape);

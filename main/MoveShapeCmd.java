@@ -30,7 +30,7 @@ public class MoveShapeCmd implements ICommand, IUndoable{
 
     @Override
     public void run() {
-        //refactored to make the shapes not move randomly now.
+        // refactored to make the shapes not move randomly now.
         // used 2 loops/temp array before now only 1 loop and no temp array
         for(IDraw selectedShapes : OGlist.getSelectedShapeList()){
             OGlist.removeShape(selectedShapes);
@@ -48,8 +48,9 @@ public class MoveShapeCmd implements ICommand, IUndoable{
 //                selectShapeList.addShape(newS);
 //            }
         }
-//        selectShapeList.notifyObserver();
+//        OGlist.notifyObserver();
         CommandHistory.add(this);
+        System.out.println("# moved shapes: " + OGlist.getSelectedShapeList().size());
     }
 
     @Override

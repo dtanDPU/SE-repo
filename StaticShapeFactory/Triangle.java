@@ -16,9 +16,8 @@ public class Triangle implements IDraw {
     int width, height;
     Points startPoint, endPoint, newStart, newEnd  ;
     private static ColorMap colorMap = new ColorMap();
-    int[] X = new int [3];
-    int[] Y = new int [3];
-
+    int[] X ;
+    int[] Y ;
 
 
     public Triangle(ShapeProperties shapeProperties) {
@@ -32,16 +31,6 @@ public class Triangle implements IDraw {
         this.endPoint = shapeProperties.getEndPoint();
         this.newEnd = shapeProperties.getNewEndPoint();
         this.newStart = shapeProperties.getNewStartPoint();
-//        Points newP = new Points(shapeProperties.getNewStartPoint().x, shapeProperties.getNewEndPoint().y);
-//
-//
-//        X[0] = shapeProperties.getStartPoint().getX();
-//        X[1] = shapeProperties.getEndPoint().getX();
-//        X[2] = newP.getX();
-//
-//        Y[0] = shapeProperties.getStartPoint().getY();
-//        Y[1] = shapeProperties.getEndPoint().getY();
-//        Y[2] = newP.getY();
 
     }
 
@@ -66,19 +55,8 @@ public class Triangle implements IDraw {
                 graphics.setColor(primary);
                 graphics.fillPolygon(X,Y,3);
             }
-
         }
-
     }
-
-//    @Override
-//    public void move(int dx, int dy) {
-//        Points newStart = new Points(startPoint.getX() +dx, startPoint.getY()+dy);
-//        Points newEnd = new Points(endPoint.getX()+dx, endPoint.getY()+dy);
-//        startPoint = newStart;
-//        endPoint = newEnd;
-//
-//    }
 
     @Override
     public void addDX(int dx) {
@@ -92,7 +70,6 @@ public class Triangle implements IDraw {
         Y[0] = newStart.getY() + dy;
         Y[1] = newEnd.getY() + dy;
         Y[2] = newEnd.getY() + dy;
-
     }
 
     //shape collision from link and discussion board
