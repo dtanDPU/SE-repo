@@ -57,20 +57,33 @@ public class Triangle implements IDraw {
             }
         }
     }
-
     @Override
     public void addDX(int dx) {
-        X[0] = newStart.getX() + dx;
-        X[1] = newEnd.getX() + dx;
-        X[2] = newStart.getX() + dx;
+        X = new int[]{startPoint.getX() + dx, endPoint.getX() + dx, startPoint.getX() + dx};
+        startPoint.setX(startPoint.getX() + dx);
+        endPoint.setX(endPoint.getX() + dx);
     }
 
     @Override
     public void addDY(int dy) {
-        Y[0] = newStart.getY() + dy;
-        Y[1] = newEnd.getY() + dy;
-        Y[2] = newEnd.getY() + dy;
+        Y = new int[]{startPoint.getY() + dy, endPoint.getY() +dy , endPoint.getY() +dy};
+        startPoint.setY(startPoint.getY() + dy);
+        endPoint.setY(endPoint.getY() + dy);
     }
+
+//    @Override
+//    public void addDX(int dx) {
+//        X[0] = newStart.getX() + dx;
+//        X[1] = newEnd.getX() + dx;
+//        X[2] = newStart.getX() + dx;
+//    }
+//
+//    @Override
+//    public void addDY(int dy) {
+//        Y[0] = newStart.getY() + dy;
+//        Y[1] = newEnd.getY() + dy;
+//        Y[2] = newEnd.getY() + dy;
+//    }
 
     //shape collision from link and discussion board
     // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java

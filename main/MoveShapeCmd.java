@@ -2,7 +2,6 @@ package main;
 
 import StaticShapeFactory.ShapeList;
 import StaticShapeFactory.ShapeProperties;
-import model.interfaces.IApplicationState;
 import model.interfaces.IDraw;
 import view.interfaces.ISubject;
 
@@ -48,7 +47,7 @@ public class MoveShapeCmd implements ICommand, IUndoable{
 //                selectShapeList.addShape(newS);
 //            }
         }
-//        OGlist.notifyObserver();
+        OGlist.notifyObserver();
         CommandHistory.add(this);
         System.out.println("# moved shapes: " + OGlist.getSelectedShapeList().size());
     }

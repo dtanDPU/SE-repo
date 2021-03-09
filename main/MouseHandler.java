@@ -1,17 +1,10 @@
 package main;
 
-import StaticShapeFactory.IShapeList;
-import StaticShapeFactory.IShapeProperties;
+
 import StaticShapeFactory.ShapeList;
 import StaticShapeFactory.ShapeProperties;
-import model.MouseMode;
-import model.dialogs.ChooseStartAndEndPointModeDialog;
 import model.interfaces.IApplicationState;
-import model.persistence.ApplicationState;
-import model.persistence.StartEndPoints;
 import view.interfaces.PaintCanvasBase;
-
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -47,8 +40,8 @@ public class MouseHandler extends MouseAdapter {
         shapeProps.setEndPoint(endPoint);
 //        System.out.println("End: " + "(" + endPoint.getX() + "," + endPoint.getY() + ")");
 
-        // calculates width/height of the rectangle
 
+        // calculates width/height of the rectangle
         x = shapeProps.getNewEndPoint().getX() - shapeProps.getNewStartPoint().getX();
         y = shapeProps.getNewEndPoint().getY() - shapeProps.getNewStartPoint().getY();
 //        x = Math.min(startPoint.getX(), endPoint.getX());

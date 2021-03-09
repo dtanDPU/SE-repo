@@ -4,7 +4,6 @@ import model.interfaces.IDraw;
 import model.interfaces.IObserver;
 import view.interfaces.ISubject;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ShapeList implements ISubject {
     ArrayList<IDraw> shapeListArray ;

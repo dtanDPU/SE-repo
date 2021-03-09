@@ -65,14 +65,14 @@ public class Rectangle implements IDraw{
                     1, new float[]{9}, 0);
             graphics2D.setStroke(stroke);
             graphics2D.setColor(Color.BLACK);
-            graphics2D.drawRect(newStart.getX()-10, newStart.getY()-10, width+20, height+20);
+            graphics2D.drawRect(newStart.getX()-20, newStart.getY()-20, width+40, height+40);
         }
         else {
             Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
                     1, new float[]{9}, 0);
             graphics2D.setStroke(stroke);
             graphics2D.setColor(Color.BLACK);
-            graphics2D.drawRect(newStart.getX()-5, newStart.getY()-5, width+10, height+10);
+            graphics2D.drawRect(newStart.getX()-10, newStart.getY()-10, width+20, height+20);
         }
     }
 
@@ -81,14 +81,12 @@ public class Rectangle implements IDraw{
     public void addDX(int dx) {
         newStart.setX(newStart.getX() + dx);
         newEnd.setX(newEnd.getX() + dx);
-
     }
 
     @Override
     public void addDY(int dy) {
         newStart.setY(newStart.getY() + dy);
         newEnd.setY(newEnd.getY() + dy);
-
     }
 
 

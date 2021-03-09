@@ -1,12 +1,7 @@
 package main;
 
-import StaticShapeFactory.ShapeList;
 import StaticShapeFactory.ShapeProperties;
-import model.ShapeType;
-import model.interfaces.IApplicationState;
 import model.interfaces.IDraw;
-import model.interfaces.IObserver;
-import model.persistence.DrawShape;
 import view.interfaces.ISubject;
 import view.interfaces.PaintCanvasBase;
 
@@ -15,7 +10,6 @@ import java.awt.*;
 public class SelectShapeCmd implements ICommand {
 
     public ShapeProperties shapeProps;
-    ShapeList shapeList;
     ISubject selectedShapeList;
     IDraw selectedShape;
     Points newStart;
@@ -53,6 +47,7 @@ public class SelectShapeCmd implements ICommand {
                 shapeProps.notSelected();
             }
         }
+        // deselects shapes
         if(!shapeProps.ifSelected()) {
             selectedShapeList.clearSelectedList();
             selectedShapeList.notifyObserver();

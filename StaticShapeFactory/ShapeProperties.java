@@ -104,15 +104,8 @@ public class ShapeProperties implements IShapeProperties{
     }
 
     @Override
-    public void draw(Graphics2D graphics2D){
+    public void draw(Graphics2D graphics2D){ }
 
-    }
-    public void setNewStartPoint() {
-    }
-
-    public void setNewEndPoint() {
-
-    }
 
     public void selected () {
         this.ifSelected = true;
