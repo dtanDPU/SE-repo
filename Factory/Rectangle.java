@@ -1,11 +1,9 @@
-package StaticShapeFactory;
+package Factory;
 
 import main.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.interfaces.IDraw;
-import model.persistence.ApplicationState;
-import view.interfaces.PaintCanvasBase;
 
 import java.awt.*;
 
@@ -88,16 +86,23 @@ public class Rectangle implements IDraw{
     }
 
 
+
     //shape collision from link and discussion board
     // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
+//    @Override
+//    public boolean shapeCollision(Points points) {
+//        return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
+//                points.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY() > newStart.getY() &&
+//                points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
+//                points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
+//    }
     @Override
     public boolean shapeCollision(Points points) {
-        return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
-                points.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY() > newStart.getY() &&
-                points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
-                points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
+        return (points.getX() + shapeProperties.getHeight() > newStart.getX() &&
+                points.getY() + shapeProperties.getWidth() > newStart.getY() &&
+                points.getX() > newStart.getX() + shapeProperties.getWidth() &&
+                points.getY() > newStart.getY() + shapeProperties.getHeight());
     }
-
 
     public ShapeProperties getShapeProps() {
         return shapeProperties;

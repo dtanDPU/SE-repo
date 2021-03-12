@@ -1,4 +1,4 @@
-package StaticShapeFactory;
+package Factory;
 
 import model.interfaces.IDraw;
 import model.interfaces.IObserver;

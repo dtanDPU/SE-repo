@@ -1,14 +1,13 @@
-package main;
+package controller;
 
 
-import StaticShapeFactory.ShapeList;
-import StaticShapeFactory.ShapeProperties;
-import model.ShapeColor;
+import Factory.ShapeList;
+import Factory.ShapeProperties;
+import main.Points;
 import model.interfaces.IApplicationState;
 import view.interfaces.PaintCanvasBase;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class MouseHandler extends MouseAdapter {
     PaintCanvasBase canvasBase;

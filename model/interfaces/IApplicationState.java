@@ -1,7 +1,6 @@
 package model.interfaces;
 
-import StaticShapeFactory.ShapeProperties;
-import main.Points;
+import Factory.ShapeProperties;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;

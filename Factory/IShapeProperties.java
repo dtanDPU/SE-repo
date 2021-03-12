@@ -1,4 +1,4 @@
-package StaticShapeFactory;
+package Factory;
 
 import main.Points;
 import model.ShapeColor;
@@ -39,6 +39,7 @@ public interface IShapeProperties {
     void selected();
     void notSelected();
     boolean ifSelected();
+    boolean isGrouped();
 
 
 }

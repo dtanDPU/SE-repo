@@ -1,4 +1,4 @@
-package StaticShapeFactory;
+package Factory;
 
 import model.ShapeType;
 import model.interfaces.IDraw;

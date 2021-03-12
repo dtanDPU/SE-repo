@@ -1,9 +1,7 @@
-package main;
+package controller;
 
-import StaticShapeFactory.ShapeList;
-import StaticShapeFactory.ShapeProperties;
-import controller.IJPaintController;
-import controller.JPaintController;
+import Factory.ShapeList;
+import Factory.ShapeProperties;
 import model.persistence.ApplicationState;
 import model.persistence.DrawShape;
 import view.gui.Gui;

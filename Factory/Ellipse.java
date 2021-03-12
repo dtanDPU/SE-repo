@@ -1,11 +1,9 @@
-package StaticShapeFactory;
+package Factory;
 
-import main.CreateShapeCmd;
 import main.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.interfaces.IDraw;
-import view.interfaces.PaintCanvasBase;
 
 import java.awt.*;
 
@@ -71,13 +69,35 @@ public class Ellipse implements IDraw {
 
     //shape collision from link and discussion board
     // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
+//    @Override
+//    public boolean shapeCollision(Points points) {
+//        return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
+//                points.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY() > newStart.getY() &&
+//                points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
+//                points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
+//    }
+
     @Override
     public boolean shapeCollision(Points points) {
-        return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
-                points.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY() > newStart.getY() &&
-                points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
-                points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
+        return (points.getX() + shapeProperties.getWidth() > newStart.getX() &&
+                points.getY() + shapeProperties.getHeight() > newStart.getY() &&
+                points.getX() > newStart.getX() + shapeProperties.getWidth() &&
+                points.getY() > newStart.getY() + shapeProperties.getHeight());
     }
+
+//    public boolean shapeCollision(Points points) {
+//        int selectBoxX = Math.min(startPoint.getX(), endPoint.getX());
+//        int selectBoxY = Math.min(startPoint.getY(), endPoint.getY());
+//        int selectBoxWidth = Math.max(startPoint.getX(), endPoint.getX()) ;
+//        int selectBoxHeight = Math.max(startPoint.getY(), endPoint.getY()) ;
+//
+//        return (points.getX() < selectBoxX + selectBoxWidth &&
+//                points.getX() + shapeProperties.getWidth() > selectBoxX &&
+//                points.getY() < selectBoxY + selectBoxHeight &&
+//                points.getY() + shapeProperties.getHeight() > selectBoxY);
+//    }
+
+
 
 
     public ShapeProperties getShapeProps() {

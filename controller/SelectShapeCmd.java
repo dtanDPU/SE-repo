@@ -1,11 +1,9 @@
-package main;
+package controller;
 
-import StaticShapeFactory.ShapeProperties;
+import Factory.ShapeProperties;
 import model.interfaces.IDraw;
 import view.interfaces.ISubject;
 import view.interfaces.PaintCanvasBase;
-
-import java.awt.*;
 
 public class SelectShapeCmd implements ICommand {
 

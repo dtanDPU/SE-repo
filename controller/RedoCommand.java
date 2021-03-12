@@ -1,4 +1,4 @@
-package main;
+package controller;
 
 public class RedoCommand implements ICommand {
     @Override

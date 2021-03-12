@@ -1,7 +1,6 @@
 package model.persistence;
 
-import StaticShapeFactory.ShapeList;
-import StaticShapeFactory.ShapeProperties;
+import Factory.ShapeProperties;
 import main.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
@@ -11,7 +10,6 @@ import model.dialogs.DialogProvider;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
 import view.interfaces.IUiModule;
-import view.interfaces.PaintCanvasBase;
 
 public class ApplicationState implements IApplicationState {
     private final IUiModule uiModule;

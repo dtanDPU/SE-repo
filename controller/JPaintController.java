@@ -1,11 +1,9 @@
 package controller;
 
-import StaticShapeFactory.ShapeList;
-import StaticShapeFactory.ShapeProperties;
-import main.*;
+import Factory.ShapeList;
+import Factory.ShapeProperties;
 import model.interfaces.IApplicationState;
 import view.EventName;
-import view.interfaces.ISubject;
 import view.interfaces.IUiModule;
 
 public class JPaintController implements IJPaintController {

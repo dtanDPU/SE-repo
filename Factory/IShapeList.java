@@ -1,10 +1,8 @@
-package StaticShapeFactory;
+package Factory;
 
-import main.CreateShapeCmd;
 import model.interfaces.IDraw;
 import model.interfaces.IObserver;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public interface IShapeList {

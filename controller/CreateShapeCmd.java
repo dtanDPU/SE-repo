@@ -1,8 +1,7 @@
-package main;
+package controller;
 
-import StaticShapeFactory.*;
+import Factory.*;
 
-import model.interfaces.IApplicationState;
 import model.interfaces.IDraw;
 
 

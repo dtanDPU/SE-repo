@@ -1,14 +1,9 @@
-package main;
+package controller;
 
-import StaticShapeFactory.ShapeFactory;
-import StaticShapeFactory.ShapeList;
-import StaticShapeFactory.ShapeProperties;
-import model.interfaces.IApplicationState;
+import Factory.ShapeList;
+import Factory.ShapeProperties;
 import model.interfaces.IDraw;
 import view.interfaces.ISubject;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class PasteCmd implements ICommand, IUndoable{
     ISubject copiedList;

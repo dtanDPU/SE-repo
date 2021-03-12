@@ -1,8 +1,8 @@
 package model.persistence;
 
-import StaticShapeFactory.ColorMap;
-import StaticShapeFactory.ShapeList;
-import StaticShapeFactory.ShapeProperties;
+import Factory.ColorMap;
+import Factory.ShapeList;
+import Factory.ShapeProperties;
 import model.ShapeColor;
 import model.interfaces.IDraw;
 import model.interfaces.IObserver;

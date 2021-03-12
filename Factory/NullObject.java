@@ -1,4 +1,4 @@
-package StaticShapeFactory;
+package Factory;
 
 import main.Points;
 import model.interfaces.IDraw;

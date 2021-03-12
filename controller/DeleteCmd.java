@@ -1,6 +1,6 @@
-package main;
+package controller;
 
-import StaticShapeFactory.ShapeProperties;
+import Factory.ShapeProperties;
 import model.interfaces.IDraw;
 import view.interfaces.ISubject;
 
