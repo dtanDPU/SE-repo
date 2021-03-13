@@ -1,8 +1,8 @@
 package controller;
 
-import Factory.ShapeProperties;
-import model.interfaces.IDraw;
-import view.interfaces.ISubject;
+import model.persistence.ShapeProperties;
+import view.interfaces.IDraw;
+import model.interfaces.ISubject;
 import view.interfaces.PaintCanvasBase;
 
 public class SelectShapeCmd implements ICommand {

@@ -1,4 +1,4 @@
-package main;
+package view.gui;
 
 
 public class Points {

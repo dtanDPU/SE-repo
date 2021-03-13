@@ -1,7 +1,6 @@
 package model.persistence;
 
-import Factory.ShapeProperties;
-import main.Points;
+import view.gui.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;

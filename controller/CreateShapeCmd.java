@@ -1,11 +1,13 @@
 package controller;
 
-import Factory.*;
+import model.Factory.*;
 
-import model.interfaces.IDraw;
+import view.interfaces.IDraw;
+import model.persistence.ShapeList;
+import model.persistence.ShapeProperties;
 
 
-public class CreateShapeCmd implements ICommand, IUndoable{
+public class CreateShapeCmd implements ICommand, IUndoable {
     public ShapeProperties shapeProps;
     ShapeList shapeList;
     IDraw shape;
@@ -16,14 +18,11 @@ public class CreateShapeCmd implements ICommand, IUndoable{
         this.shapeProps = shapeProps;
         this.shapeList = shapeList;
         this.shapeFactory = new ShapeFactory();
-//        this.applicationState = applicationState;
 
     }
 
     @Override
     public void run() {
-//        ShapeFactory shapeFactory = new ShapeFactory();
-//        shapeProps = applicationState.getShapeProps();
         shape = shapeFactory.makeShape(shapeProps);
         shapeList.addShape(shape);
         CommandHistory.add(this);

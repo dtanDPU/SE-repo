@@ -1,10 +1,13 @@
-package controller;
+package view.gui;
 
 
-import Factory.ShapeList;
-import Factory.ShapeProperties;
-import main.Points;
+import controller.CreateShapeCmd;
+import controller.MoveShapeCmd;
+import controller.SelectShapeCmd;
+import model.persistence.ShapeList;
+import model.persistence.ShapeProperties;
 import model.interfaces.IApplicationState;
+import controller.ICommand;
 import view.interfaces.PaintCanvasBase;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -33,28 +36,23 @@ public class MouseHandler extends MouseAdapter {
         shapeProps = applicationState.getShapeProps();
         startPoint = new Points(e.getX(), e.getY());
         shapeProps.setStartPoint(startPoint);
-
-
-//        System.out.println("Start: " + "(" + startPoint.getX() + "," + startPoint.getY() + ")");
+        System.out.println("Start: " + "(" + startPoint.getX() + "," + startPoint.getY() + ")");
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         endPoint = new Points(e.getX(), e.getY());
         shapeProps.setEndPoint(endPoint);
-//        System.out.println("End: " + "(" + endPoint.getX() + "," + endPoint.getY() + ")");
+        System.out.println("End: " + "(" + endPoint.getX() + "," + endPoint.getY() + ")");
 
 
         // calculates width/height of the rectangle
         x = shapeProps.getNewEndPoint().getX() - shapeProps.getNewStartPoint().getX();
         y = shapeProps.getNewEndPoint().getY() - shapeProps.getNewStartPoint().getY();
-//        x = Math.min(startPoint.getX(), endPoint.getX());
-//        y = Math.min(startPoint.getY(), endPoint.getY());
 
         shapeProps.setWidth(x);
         shapeProps.setHeight(y);
-//        width = Math.abs(endPoint.getX() - startPoint.getX());
-//        height = Math.abs(endPoint.getY() - startPoint.getY());
+
 
         switch (applicationState.getActiveMouseMode()) {
             case DRAW -> {

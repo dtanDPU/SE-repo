@@ -1,7 +1,7 @@
 package controller;
 
-import Factory.ShapeList;
-import Factory.ShapeProperties;
+import model.persistence.ShapeList;
+import model.persistence.ShapeProperties;
 import model.interfaces.IApplicationState;
 import view.EventName;
 import view.interfaces.IUiModule;

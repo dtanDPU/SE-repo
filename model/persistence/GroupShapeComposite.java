@@ -1,10 +1,9 @@
 package model.persistence;
 
-import Factory.ShapeProperties;
-import main.Points;
+import view.gui.Points;
 import model.ShapeShadingType;
-import model.interfaces.IDraw;
-import view.interfaces.ISubject;
+import view.interfaces.IDraw;
+import model.interfaces.ISubject;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -48,15 +47,6 @@ public class GroupShapeComposite implements IDraw {
         startPoint.setY(startPoint.getY() + dy);
         endPoint.setY(endPoint.getY() + dy);
     }
-
-    //shape collision from link and discussion board
-    // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
-//    public boolean shapeCollision(Points points) {
-//        return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
-//                points.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY() > newStart.getY() &&
-//                points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
-//                points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
-//    }
 
     public boolean shapeCollision(Points points) {
         return (points.getX() + shapeProperties.getWidth() > newStart.getX() &&

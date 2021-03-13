@@ -1,7 +1,8 @@
-package Factory;
+package model.Factory;
 
-import main.Points;
-import model.interfaces.IDraw;
+import view.gui.Points;
+import view.interfaces.IDraw;
+import model.persistence.ShapeProperties;
 
 import java.awt.*;
 

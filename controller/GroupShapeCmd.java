@@ -1,17 +1,17 @@
 package controller;
 
-import Factory.ShapeProperties;
-import main.Points;
-import model.interfaces.IDraw;
+import model.persistence.ShapeProperties;
+import view.gui.Points;
+import view.interfaces.IDraw;
 import model.persistence.GroupShapeComposite;
-import view.interfaces.ISubject;
+import model.interfaces.ISubject;
 
 import java.util.ArrayList;
 
-public class GroupShapeCmd implements ICommand, IUndoable{
+public class GroupShapeCmd implements ICommand, IUndoable {
     ISubject selectShapeList;
     ShapeProperties shapeProperties;
-    ArrayList<IDraw > undoSL = new ArrayList<>();
+    ArrayList<IDraw > tempList = new ArrayList<>();
 
     public GroupShapeCmd(ISubject selectShapeList, ShapeProperties shapeProperties) {
         this.selectShapeList = selectShapeList;
@@ -50,31 +50,22 @@ public class GroupShapeCmd implements ICommand, IUndoable{
         selectShapeList.getSelectedShapeList().add(groupShapeComposite);
         selectShapeList.notifyObserver();
         CommandHistory.add(this);
-
-        if(!shapeProperties.ifSelected() ) {
-            selectShapeList.clearSelectedList();
-            selectShapeList.notifyObserver();
-        }
-
-
         System.out.println("test grouped: " + selectShapeList.getGroupList().size());
 
     }
 
     @Override
     public void undo() {
-        undoSL.add(selectShapeList.getShapeList().get(selectShapeList.getSelectedShapeList().size()-1));
-        selectShapeList.removeShape(selectShapeList.getShapeList().get(selectShapeList.getSelectedShapeList().size()-1));
+        tempList.add(selectShapeList.getSelectedShapeList().get(selectShapeList.getSelectedShapeList().size()-1));
+        selectShapeList.removeShape(selectShapeList.getSelectedShapeList().get(selectShapeList.getSelectedShapeList().size()-1));
         selectShapeList.notifyObserver();
-
 
     }
 
 
     @Override
     public void redo() {
-
-            for (IDraw shape : undoSL) {
+            for (IDraw shape : tempList) {
                 selectShapeList.addShape(shape);
                 selectShapeList.notifyObserver();
 

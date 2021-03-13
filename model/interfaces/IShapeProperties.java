@@ -1,6 +1,6 @@
-package Factory;
+package model.interfaces;
 
-import main.Points;
+import view.gui.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
@@ -33,13 +33,11 @@ public interface IShapeProperties {
     void setStartPoint(Points startPoint);
     void setEndPoint(Points endPoint);
     void draw(Graphics2D graphics2D);
-
     Points getNewStartPoint();
     Points getNewEndPoint();
     void selected();
     void notSelected();
     boolean ifSelected();
-    boolean isGrouped();
 
 
 }

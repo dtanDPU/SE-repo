@@ -1,4 +1,4 @@
-package Factory;
+package model.persistence;
 
 import model.ShapeColor;
 

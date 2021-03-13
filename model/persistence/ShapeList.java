@@ -1,8 +1,8 @@
-package Factory;
+package model.persistence;
 
-import model.interfaces.IDraw;
+import view.interfaces.IDraw;
 import model.interfaces.IObserver;
-import view.interfaces.ISubject;
+import model.interfaces.ISubject;
 import java.util.ArrayList;
 
 public class ShapeList implements ISubject {
@@ -47,10 +47,6 @@ public class ShapeList implements ISubject {
         return shapeListArray;
     }
 
-    public void clearShapeList() {
-         shapeListArray.clear();
-    }
-
     public ArrayList<IDraw> getSelectedShapeList() {
         return selectedListArray;
     }
@@ -65,9 +61,6 @@ public class ShapeList implements ISubject {
 
     public ArrayList<IDraw> getCopy() {
         return copyList;
-    }
-    public void copyRemove() {
-        copyList.clear();
     }
 
     public void getCopiedShapeList (IDraw shape) {
@@ -86,9 +79,6 @@ public class ShapeList implements ISubject {
         return groupList.size();
     }
 
-    public void removeGroupedShapes(IDraw shape) {
-        groupList.remove(shape);
-    }
 
 
 }

@@ -1,10 +1,7 @@
 package model.persistence;
 
-import Factory.ColorMap;
-import Factory.ShapeList;
-import Factory.ShapeProperties;
 import model.ShapeColor;
-import model.interfaces.IDraw;
+import view.interfaces.IDraw;
 import model.interfaces.IObserver;
 import view.interfaces.PaintCanvasBase;
 
@@ -14,8 +11,7 @@ public class DrawShape implements IObserver {
 
     PaintCanvasBase paintCanvas;
     ShapeList shapeList;
-    ShapeProperties shapeProperties;
-//    private static ColorMap colorMap = new ColorMap();
+
 
     public DrawShape(PaintCanvasBase paintCanvas, ShapeList shapeList) {
         this.paintCanvas = paintCanvas;
@@ -26,7 +22,6 @@ public class DrawShape implements IObserver {
 
         Graphics2D g = paintCanvas.getGraphics2D();
         g.setColor(ColorMap.getInstance().getColor(ShapeColor.WHITE));
-//        g.setColor(colorMap.getTheColor(ShapeColor.WHITE));
         g.fillRect(0,0,paintCanvas.getWidth(),paintCanvas.getHeight());
 
         for(IDraw shape : shapeList.getShapeList()){

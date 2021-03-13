@@ -1,11 +1,11 @@
 package controller;
 
-import Factory.ShapeList;
-import Factory.ShapeProperties;
-import model.interfaces.IDraw;
-import view.interfaces.ISubject;
+import model.persistence.ShapeList;
+import model.persistence.ShapeProperties;
+import view.interfaces.IDraw;
+import model.interfaces.ISubject;
 
-public class MoveShapeCmd implements ICommand, IUndoable{
+public class MoveShapeCmd implements ICommand, IUndoable {
 
     public ShapeProperties shapeProps;
     ISubject selectShapeList, groupList;
@@ -48,25 +48,18 @@ public class MoveShapeCmd implements ICommand, IUndoable{
             selectedShapes.addDY(-Y);
             shapeList.addShape(selectedShapes);
         }
-//        selectShapeList.notifyObserver();
     }
 
     @Override
     public void redo() {
         //doing run() seems to make it worse than doing this way
-
         for(IDraw selectedShapes : shapeList.getSelectedShapeList()){
             selectedShapes.addDX(X);
             selectedShapes.addDY(Y);
             shapeList.addShape(selectedShapes);
         }
-//        for (IDraw shapeStore : shapeList.getSelectedShapeList()) {
-//            shapeStore.addDX(X);
-//            shapeStore.addDY(Y);
-//            newS = shapeStore;
-//            selectShapeList.addShape(newS);
+
         }
-//        selectShapeList.notifyObserver();
 
 
 

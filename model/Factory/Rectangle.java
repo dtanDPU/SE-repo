@@ -1,9 +1,11 @@
-package Factory;
+package model.Factory;
 
-import main.Points;
+import view.gui.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
-import model.interfaces.IDraw;
+import view.interfaces.IDraw;
+import model.persistence.ColorMap;
+import model.persistence.ShapeProperties;
 
 import java.awt.*;
 
@@ -16,8 +18,6 @@ public class Rectangle implements IDraw{
 
     public Rectangle(ShapeProperties shapeProperties) {
         this.shapeProperties = shapeProperties;
-//        this.primary = colorMap.getTheColor(shapeProperties.getPrimary());
-//        this.secondary = colorMap.getTheColor(shapeProperties.getSecondary());
         this.shadingType = shapeProperties.getShadeType();
         this.startPoint = shapeProperties.getStartPoint();
         this.endPoint = shapeProperties.getEndPoint();
@@ -89,13 +89,6 @@ public class Rectangle implements IDraw{
 
     //shape collision from link and discussion board
     // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/#implementing-aabb-collision-detection-in-java
-//    @Override
-//    public boolean shapeCollision(Points points) {
-//        return (points.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() > newStart.getX() &&
-//                points.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY() > newStart.getY() &&
-//                points.getX() > newStart.getX() + shapeProperties.getNewEndPoint().getX() - shapeProperties.getNewStartPoint().getX() &&
-//                points.getY() > newStart.getY() + shapeProperties.getNewEndPoint().getY() - shapeProperties.getNewStartPoint().getY());
-//    }
     @Override
     public boolean shapeCollision(Points points) {
         return (points.getX() + shapeProperties.getHeight() > newStart.getX() &&

@@ -1,15 +1,16 @@
-package Factory;
+package model.persistence;
 
-import main.Points;
+import view.gui.Points;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
+import model.interfaces.IShapeProperties;
 import view.interfaces.PaintCanvasBase;
 
 import java.awt.*;
 
 
-public class ShapeProperties implements IShapeProperties{
+public class ShapeProperties implements IShapeProperties {
     private ShapeType shapeType;
     private ShapeColor primary, secondary;
     private ShapeShadingType shapeShadingType;
@@ -106,7 +107,6 @@ public class ShapeProperties implements IShapeProperties{
     @Override
     public void draw(Graphics2D graphics2D){ }
 
-
     public void selected () {
         this.ifSelected = true;
     }
@@ -118,8 +118,6 @@ public class ShapeProperties implements IShapeProperties{
     public boolean ifSelected() {
         return this.ifSelected;
     }
-
-    public boolean isGrouped() {return false;}
 
 
 

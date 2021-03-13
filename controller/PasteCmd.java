@@ -1,11 +1,11 @@
 package controller;
 
-import Factory.ShapeList;
-import Factory.ShapeProperties;
-import model.interfaces.IDraw;
-import view.interfaces.ISubject;
+import model.persistence.ShapeList;
+import model.persistence.ShapeProperties;
+import view.interfaces.IDraw;
+import model.interfaces.ISubject;
 
-public class PasteCmd implements ICommand, IUndoable{
+public class PasteCmd implements ICommand, IUndoable {
     ISubject copiedList;
     ShapeProperties shapeProperties;
     IDraw tempS;

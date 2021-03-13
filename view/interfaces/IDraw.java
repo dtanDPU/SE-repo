@@ -1,7 +1,7 @@
-package model.interfaces;
+package view.interfaces;
 
-import Factory.ShapeProperties;
-import main.Points;
+import model.persistence.ShapeProperties;
+import view.gui.Points;
 
 import java.awt.*;
 
@@ -13,7 +13,6 @@ public interface IDraw {
     boolean shapeCollision(Points points);
     ShapeProperties getShapeProps();
     void outline(Graphics graphics);
-//    void move(int dx, int dy);
 
 
 

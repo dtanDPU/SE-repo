@@ -1,6 +1,6 @@
 package model.interfaces;
 
-import Factory.ShapeProperties;
+import model.persistence.ShapeProperties;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;

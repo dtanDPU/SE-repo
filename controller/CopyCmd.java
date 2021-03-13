@@ -1,10 +1,10 @@
 package controller;
 
-import Factory.ShapeProperties;
-import model.interfaces.IDraw;
-import view.interfaces.ISubject;
+import model.persistence.ShapeProperties;
+import view.interfaces.IDraw;
+import model.interfaces.ISubject;
 
-public class CopyCmd implements ICommand{
+public class CopyCmd implements ICommand {
     ShapeProperties shapeProperties;
     ISubject selectShapeList;
 
