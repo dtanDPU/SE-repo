@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.EnumMap;
 
 public class ColorMap {
-    private static ColorMap instance = new ColorMap();
+    private static final ColorMap instance = new ColorMap();
     private static EnumMap<ShapeColor, Color> map;
 
     private ColorMap() {
