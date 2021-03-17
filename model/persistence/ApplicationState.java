@@ -89,19 +89,6 @@ public class ApplicationState implements IApplicationState {
         activeMouseMode = MouseMode.DRAW;
     }
 
-//    public Points getNewStartPoint() {
-//        int startX = Math.min(startPoint.getX(), endPoint.getX());
-//        int startY = Math.min(startPoint.getY(), endPoint.getY());
-//        newStartPoint = new Points(startX, startY);
-//        return newStartPoint;
-//    }
-//    public Points getNewEndPoint() {
-//        int endX = Math.max(startPoint.getX(), endPoint.getX());
-//        int endY = Math.max(startPoint.getY(), endPoint.getY());
-//        newEndPoint = new Points(endX, endY);
-//        return newEndPoint;
-//    }
-
 
 
     public ShapeProperties getShapeProps() {
@@ -112,10 +99,6 @@ public class ApplicationState implements IApplicationState {
         shapeProperties.setShadeType(activeShapeShadingType);
         shapeProperties.setHeight(height);
         shapeProperties.setWidth(width);
-//        shapeProperties.setStartPoint(startPoint);
-//        shapeProperties.setEndPoint(endPoint);
-//        shapeProperties.setNewEndPoint();
-//        shapeProperties.setNewStartPoint();
         return shapeProperties;
     }
 
